@@ -2,47 +2,43 @@
     public class ListNode {
         // node should contain at least name, address, city, and phone number fields in the phonebook node
 
-        private PhonebookNode front;
+        private ListNode front;
 
         public String nameFirst;
         public String nameLast;
         public String address;
         public String city;
         public String number;
-        public PhonebookNode next;
+        public ListNode next;
 
-        // TODO constructors must have the same name as the class
-        // That's why these constructors have errors
-        // So either every reference to PhonebookNode needs to be changed to ListNode
-        // Or the name of the class needs to be changed to PhonebookNode
 
-        public PhonebookNode() {
+        public ListNode() {
             front = null;
-        } // end of PhonebookNode constructor
+        } // end of ListNode constructor
 
         //constructs new node to store the phonebook info and no next node
-        public PhonebookNode(String nameFirst, String nameLast, String address, String city, String number) {
+        public ListNode(String nameFirst, String nameLast, String address, String city, String number) {
             this.nameFirst = nameFirst;
             this.nameLast = nameLast;
             this.address = address;
             this.city = city;
             this.number = number;
             this.next = null;
-        } // end of PhonebookNode constructor
+        } // end of ListNode constructor
 
         //constructs a new node to store phonebook info and references change to first node
-        public PhonebookNode(String nameFirst, String nameLast, String address, String city, String number) {
+        public ListNode(String nameFirst, String nameLast, String address, String city, String number) {
         this.nameFirst = nameFirst;
         this.nameLast = nameLast;
         this.address = address;
         this.city = city;
         this.number = number;
         this.next = next;
-        } // end of PhonebookNode constructor
+        } // end of ListNode constructor
 
     public int size() {
         int count = 0;
-        PhonebookNode current = front;
+        ListNode current = front;
         while (current != null) {
             current = current.next;
             count++;
@@ -57,7 +53,7 @@
         if (front == null) { //check to see if list is empty
             add(nameFirst, nameLast, address, city, number, 0); //<--- figure out purpose of the 0 maybe placeholder?
         } else {
-            PhonebookNode current = front;
+            ListNode current = front;
             //we use this loop to compare the given last name to each entry
             //if the given last name comes before the current name we insert the given name
             do {
@@ -69,7 +65,7 @@
                 current = current.next;
                 index++;
             } while (current.next != null);
-            current.next = new PhonebookNode(nameFirst, nameLast, address, city, number)
+            current.next = new ListNode(nameFirst, nameLast, address, city, number)
 
         } // end of if/else
 
@@ -79,14 +75,14 @@
         if (index ==0) {
             front = front.next;
         } else {
-            PhonebookNode current = nodeAt(index - 1);
+            ListNode current = nodeAt(index - 1);
             current.next = current.next.next; //<-- maybe rename .next to make less confusing
         } // end of if/else
     } // end of remove method
 
     //returns a reference to the phonebook entry at the given index
-    private PhonebookNode nodeAt(int index) {
-        PhonebookNode current = front;
+    private ListNode nodeAt(int index) {
+        ListNode current = front;
         for (int i = 0; i < index; i++) {
             current = current.next;
         } // end of for loop
@@ -96,7 +92,7 @@
     //returns the index num of the entry containing the given last name
 //returns -1 if phonebook is empty or if no entry foudn
     public int getEntry(String nameLast) {
-        PhonebookNode current = front;
+        ListNode current = front;
         int index = 0;
 
         if (front == null) {
@@ -114,28 +110,28 @@
 
     //modifies the last name of the given entry to the given String
     public void modifyNameLast(String nameLast, int index) {
-        PhonebookNode current = nodeAt(index);
+        ListNode current = nodeAt(index);
 
         current.nameLast = nameLast;
     } // end of modifyNameLast method
 
     //modifies the firstname name of the given entry to the given string
     public void modifyNameFirst(String nameFirst, int index) {
-        PhonebookNode current = nodeAt(index);
+        ListNode current = nodeAt(index);
 
         current.address = address;
     } // end of modifyNameFirst method
 //modifies the city of the given entry to the given string
 
     public void modifyCity(String city, int index) {
-        PhonebookNode current = nodeAt(index);
+        ListNode current = nodeAt(index);
 
         current.city = city;
     } // end of modifyCity method
 
     //modifies num of the given dentry to the given string
     public void modifyNumber(String number, int index) {
-        PhonebookNode current = nodeAt(index);
+        ListNode current = nodeAt(index);
 
         current.number = number;
     } // end of modifyNumber method
@@ -147,7 +143,7 @@
 
         } else {
             String result = front.nameLast + ", " + front.nameFirst + " | " + front.address;
-            PhonebookNode current = front.next;
+            ListNode current = front.next;
             while (current != null) {
                 // I think this method is supposed to print the entire contents of an entry
                 // The person who originally wrote the code just didn't like pressing the enter key lol
@@ -162,7 +158,7 @@
 
     // toString method that returns the
     public String toString (int index) {
-        PhonebookNode current = nodeAt(index);
+        ListNode current = nodeAt(index);
         // Same issue as previous toString method
         // TODO maybe add Address values here too
         String result = current.nameLast + ", " + current.nameFirst + " | " + "\n";

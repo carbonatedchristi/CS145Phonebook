@@ -1,14 +1,20 @@
+//Programmers: Christina Mymrin
+//             Hannah Hendrickson
+// Assignment 2 PhoneBook
+// Class: CS145 Hybrid01
 
+// TODO all classes need to be in a package to properly use protected keyword
+
+// TODO I think a next method needs to be created
     public class ListNode {
         // node should contain at least name, address, city, and phone number fields in the phonebook node
 
         private ListNode front;
-
         public String nameFirst;
         public String nameLast;
         public String address;
         public String city;
-        public String number;
+        public String number; // phone number, maybe rename "number" to "phone"
         public ListNode next;
 
 
@@ -17,7 +23,8 @@
         } // end of ListNode constructor
 
         //constructs new node to store the phonebook info and no next node
-        public ListNode(String nameFirst, String nameLast, String address, String city, String number) {
+        public ListNode(String nameFirst, String nameLast,
+                        String address, String city, String number) {
             this.nameFirst = nameFirst;
             this.nameLast = nameLast;
             this.address = address;
@@ -27,7 +34,7 @@
         } // end of ListNode constructor
 
         //constructs a new node to store phonebook info and references change to first node
-        public ListNode(String nameFirst, String nameLast, String address, String city, String number) {
+        public ListNode(String nameFirst, String nameLast, String address, String city, String number, ListNode next) {
         this.nameFirst = nameFirst;
         this.nameLast = nameLast;
         this.address = address;
@@ -36,6 +43,7 @@
         this.next = next;
         } // end of ListNode constructor
 
+    // size method, returns the number of entries in the phonebook
     public int size() {
         int count = 0;
         ListNode current = front;
@@ -46,6 +54,7 @@
         return count;
     } // end of size method
 
+        /* TODO Probably delete, a copy was make in PhonebookManager
     //adds a given phonebook entry and places it in the list in alphabetical order
     public void add(String nameFirst, String nameLast, String address, String city, String number) {
         int index = 0;
@@ -70,7 +79,9 @@
         } // end of if/else
 
     } // end of add method
+        */
 
+        /* TODO probably delete, a copy is in PhonebookManager
     public void remove(int index) {
         if (index ==0) {
             front = front.next;
@@ -79,6 +90,7 @@
             current.next = current.next.next; //<-- maybe rename .next to make less confusing
         } // end of if/else
     } // end of remove method
+        */
 
     //returns a reference to the phonebook entry at the given index
     private ListNode nodeAt(int index) {
@@ -90,24 +102,25 @@
     } // end of nodeAt method
 
     //returns the index num of the entry containing the given last name
-//returns -1 if phonebook is empty or if no entry foudn
+    //returns -1 if phonebook is empty or if no entry found
     public int getEntry(String nameLast) {
         ListNode current = front;
         int index = 0;
 
         if (front == null) {
             return -1;
-        }
+        } // end of if
         do { //iterate through list and check if given last name is found
-            if (current.nameLast.toLowerCase().equals(nameLast.toLowerCase())) {
+            if (nameLast.equalsIgnoreCase(current.nameLast)) {
                 return index;
             } // end of if
             index++;
         } while (current.next != null);
 
         return -1;
-    }
+    } // end of getEntry method
 
+    /* TODO possibly delete, all modify methods copied into PhonebookManager
     //modifies the last name of the given entry to the given String
     public void modifyNameLast(String nameLast, int index) {
         ListNode current = nodeAt(index);
@@ -129,12 +142,14 @@
         current.city = city;
     } // end of modifyCity method
 
-    //modifies num of the given dentry to the given string
+    //modifies num of the given entry to the given string
     public void modifyNumber(String number, int index) {
         ListNode current = nodeAt(index);
 
         current.number = number;
     } // end of modifyNumber method
+    */
+
 
     //toString method that lists all entries in a phonebook
     public String toString() {
@@ -146,10 +161,10 @@
             ListNode current = front.next;
             while (current != null) {
                 // I think this method is supposed to print the entire contents of an entry
-                // The person who originally wrote the code just didn't like pressing the enter key lol
+                // The person who wrote the code we copied from didn't like pressing the enter key lol
                 // TODO maybe add Address values to result String
                 // I added \n so the code would compile
-                result += "\n" + current.nameLast + ", " + current.nameFirst + " | " + "\n";
+                result = "\n" + current.nameLast + ", " + current.nameFirst + " | " + "\n";
                         current = current.next;
             } // end of while loop
             return result;
@@ -161,8 +176,7 @@
         ListNode current = nodeAt(index);
         // Same issue as previous toString method
         // TODO maybe add Address values here too
-        String result = current.nameLast + ", " + current.nameFirst + " | " + "\n";
-        return result;
+        return current.nameLast + ", " + current.nameFirst + " | " + "\n";
     } // end of toString method
 } // end of ListNode
 

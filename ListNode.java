@@ -10,11 +10,11 @@
         // node should contain at least name, address, city, and phone number fields in the phonebook node
 
         private ListNode front;
-        public String nameFirst;
-        public String nameLast;
-        public String address;
-        public String city;
-        public String number; // phone number, maybe rename "number" to "phone"
+        protected String nameFirst;
+        protected String nameLast;
+        protected String address;
+        protected String city;
+        protected String number; // phone number, maybe rename "number" to "phone"
         public ListNode next;
 
 
@@ -92,6 +92,7 @@
     } // end of remove method
         */
 
+    /* TODO probably delete, copied into PhonebookManager
     //returns a reference to the phonebook entry at the given index
     private ListNode nodeAt(int index) {
         ListNode current = front;
@@ -100,6 +101,7 @@
         } // end of for loop
         return current;
     } // end of nodeAt method
+    */
 
     //returns the index num of the entry containing the given last name
     //returns -1 if phonebook is empty or if no entry found

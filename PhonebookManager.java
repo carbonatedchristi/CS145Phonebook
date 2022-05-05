@@ -13,9 +13,33 @@ public class PhonebookManager {
         // TODO
     } // end of PhonebookManager constructor
 
+    // TODO move method, would shift entries around
+
+    // add method, simply adds new node to end of list
+    public void add(String nameFirst, String nameLast,
+                    String address, String city, String number)
+    {
+        ListNode node = new ListNode();
+
+        if (front == null)
+        {
+            front = node;
+        }
+        else
+        {
+            ListNode current = front;
+            while(current.next != null)
+            {
+                current = current.next;
+            } // end of while loop
+            current.next = node;
+        } // end of if/else
+    } // end of add method
+
 
     //adds a given phonebook entry and places it in the list in alphabetical order
-    public void add(String nameFirst, String nameLast, String address, String city, String number) {
+    public void add(String nameFirst, String nameLast,
+                    String address, String city, String number, int extraValue) {
         int index = 0;
 
         if (front == null) {
@@ -61,7 +85,7 @@ public class PhonebookManager {
     public void modifyNameFirst(String nameFirst, int index) {
         ListNode current = nodeAt(index);
 
-        current.address = address;
+        current.nameFirst = nameFirst;
     } // end of modifyNameFirst method
 
 
@@ -79,7 +103,27 @@ public class PhonebookManager {
         current.number = number;
     } // end of modifyNumber method
 
+    //returns a reference to the phonebook entry at the given index
+    private ListNode nodeAt(int index) {
+        ListNode current = front;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        } // end of for loop
+        return current;
+    } // end of nodeAt method
 
+    public void display()
+    {
+        ListNode node = front;
+
+        while (node.next != null)
+        {
+            System.out.println(node.NameFirst);
+            node = node.next;
+        } // end of while loop
+        System.out.println(node.data);
+
+    } // end of display method
 
     //manager will allow you to either add an entry
     //(name, address, city, phone #) to the end and then sort it,

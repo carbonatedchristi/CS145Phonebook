@@ -10,10 +10,7 @@ public class PhonebookTestMain {
         PhonebookManager bellingham = new PhonebookManager("Bellingham");
         PhonebookManager seattle = new PhonebookManager("Seattle");
 
-        // TODO change PBNode to either PhonebookNode or ListNode, depending on what the actual class name ends up being
-        //bellingham.add(new ListNode("David", "LastName", "1337 Weezer St.", "Bellingham", "682442020"));
-
-        //seattle.add(new ListNode("Rebecca", "222 Weezer St.", "Seattle", 2026208800));
+        bellingham.add("First", "Last", "Address", "City", "ZipCode");
 
         System.out.println("I ---------");
         System.out.println();
@@ -25,4 +22,7 @@ public class PhonebookTestMain {
 
         //seattle.modifyNameFirst(seattle.get("David"), "Zach"); //should replace davids name with zach
     } // end of main method
+
+    // TODO menu methods
+
 } // end of PhonebookTestMain

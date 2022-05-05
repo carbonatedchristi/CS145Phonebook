@@ -1,4 +1,3 @@
-public class ListNode {
 
     public class ListNode {
         // node should contain at least name, address, city, and phone number fields in the phonebook node
@@ -7,6 +6,7 @@ public class ListNode {
 
         public String nameFirst;
         public String nameLast;
+        public String address;
         public String city;
         public String number;
         public PhonebookNode next;
@@ -25,8 +25,8 @@ public class ListNode {
             this.next = null;
         }
 
-        //constructs a new node to store phonebook info and reference to the ???
-        public PhonebookNode(String nameFirst, String nameLast, String address, String city, String number)
+        //constructs a new node to store phonebook info and references change to first node
+        public PhonebookNode(String nameFirst, String nameLast, String address, String city, String number) {
         this.nameFirst = nameFirst;
         this.nameLast = nameLast;
         this.address = address;
@@ -50,7 +50,7 @@ public class ListNode {
         int index = 0;
 
         if (front == null) { //check to see if list is empty
-            add(nameFirst, nameLast, address, city, number, 0);
+            add(nameFirst, nameLast, address, city, number, 0); //<--- figure out purpose of the 0 maybe placeholder?
         } else {
             PhonebookNode current = front;
             //we use this loop to compare the given last name to each entry
@@ -62,7 +62,7 @@ public class ListNode {
                 }
 
                 current = current.next;
-                index++
+                index++;
             } while (current.next != null);
             current.next = new PhonebookNode(nameFirst, nameLast, address, city, number)
 
@@ -75,7 +75,7 @@ public class ListNode {
             front = front.next;
         } else {
             PhonebookNode current = nodeAt(index - 1);
-            current.next = current.next.next;
+            current.next = current.next.next; //<-- maybe rename .next to make less confusing
         }
     }
 
@@ -145,7 +145,7 @@ public class ListNode {
             String result = front.nameLast + ", " + front.nameFirst + " | " + front.address;
             PhonebookNode current = front.next;
             while current ( != null) {
-                result += "\n" + current.nameLast + ", " + current.nameFirst + " | " + ////////////////figure out what here
+                result += "\n" + current.nameLast + ", " + current.nameFirst + " | " + ////////////////figure out what goes here
                         current = current.next;
             }
             return result;
@@ -153,8 +153,8 @@ public class ListNode {
     }
 
     public String toString (int index) {
-        PhonebookNode current -nodeAt(index);
-        String result = current.nameLast + ", " + current.nameFirst + " | " + current.nameFirst; ///////uncertain
+        PhonebookNode current = nodeAt(index);
+        String result = current.nameLast + ", " + current.nameFirst + " | " + current.nameFirst; ////what goes here
         return result;
     }
 }

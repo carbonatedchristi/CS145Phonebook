@@ -11,9 +11,14 @@
         public String number;
         public PhonebookNode next;
 
+        // TODO constructors must have the same name as the class
+        // That's why these constructors have errors
+        // So either every reference to PhonebookNode needs to be changed to ListNode
+        // Or the name of the class needs to be changed to PhonebookNode
+
         public PhonebookNode() {
             front = null;
-        }
+        } // end of PhonebookNode constructor
 
         //constructs new node to store the phonebook info and no next node
         public PhonebookNode(String nameFirst, String nameLast, String address, String city, String number) {
@@ -23,7 +28,7 @@
             this.city = city;
             this.number = number;
             this.next = null;
-        }
+        } // end of PhonebookNode constructor
 
         //constructs a new node to store phonebook info and references change to first node
         public PhonebookNode(String nameFirst, String nameLast, String address, String city, String number) {
@@ -33,7 +38,7 @@
         this.city = city;
         this.number = number;
         this.next = next;
-    }
+        } // end of PhonebookNode constructor
 
     public int size() {
         int count = 0;
@@ -41,9 +46,9 @@
         while (current != null) {
             current = current.next;
             count++;
-        }
+        } // end of while
         return count;
-    }
+    } // end of size method
 
     //adds a given phonebook entry and places it in the list in alphabetical order
     public void add(String nameFirst, String nameLast, String address, String city, String number) {
@@ -59,16 +64,16 @@
                 if (nameLast.compareTo(current.nameLast) <  0 ) {
                     add(nameFirst, nameLast, address, city, number, index);
                     return;
-                }
+                } // end of if
 
                 current = current.next;
                 index++;
             } while (current.next != null);
             current.next = new PhonebookNode(nameFirst, nameLast, address, city, number)
 
-        }
+        } // end of if/else
 
-    }
+    } // end of add method
 
     public void remove(int index) {
         if (index ==0) {
@@ -76,17 +81,17 @@
         } else {
             PhonebookNode current = nodeAt(index - 1);
             current.next = current.next.next; //<-- maybe rename .next to make less confusing
-        }
-    }
+        } // end of if/else
+    } // end of remove method
 
     //returns a reference to the phonebook entry at the given index
     private PhonebookNode nodeAt(int index) {
         PhonebookNode current = front;
         for (int i = 0; i < index; i++) {
             current = current.next;
-        }
+        } // end of for loop
         return current;
-    }
+    } // end of nodeAt method
 
     //returns the index num of the entry containing the given last name
 //returns -1 if phonebook is empty or if no entry foudn
@@ -100,8 +105,8 @@
         do { //iterate through list and check if given last name is found
             if (current.nameLast.toLowerCase().equals(nameLast.toLowerCase())) {
                 return index;
-            }
-            index++
+            } // end of if
+            index++;
         } while (current.next != null);
 
         return -1;
@@ -109,34 +114,33 @@
 
     //modifies the last name of the given entry to the given String
     public void modifyNameLast(String nameLast, int index) {
-        PhonebookNode current - nodeAt(index);
+        PhonebookNode current = nodeAt(index);
 
         current.nameLast = nameLast;
-    }
+    } // end of modifyNameLast method
 
     //modifies the firstname name of the given entry to the given string
     public void modifyNameFirst(String nameFirst, int index) {
-        PhonebookNode current - nodeAt(index);
+        PhonebookNode current = nodeAt(index);
 
         current.address = address;
-    }
+    } // end of modifyNameFirst method
 //modifies the city of the given entry to the given string
 
     public void modifyCity(String city, int index) {
-        PhonebookNode current - nodeAt(index);
+        PhonebookNode current = nodeAt(index);
 
         current.city = city;
-    }
+    } // end of modifyCity method
 
     //modifies num of the given dentry to the given string
     public void modifyNumber(String number, int index) {
         PhonebookNode current = nodeAt(index);
 
         current.number = number;
-    }
+    } // end of modifyNumber method
 
-//returns a string that lists all entries in the phonebook
-
+    //toString method that lists all entries in a phonebook
     public String toString() {
         if (front == null) {
             return "The phonebook is empty!";
@@ -144,20 +148,27 @@
         } else {
             String result = front.nameLast + ", " + front.nameFirst + " | " + front.address;
             PhonebookNode current = front.next;
-            while current ( != null) {
-                result += "\n" + current.nameLast + ", " + current.nameFirst + " | " + ////////////////figure out what goes here
+            while (current != null) {
+                // I think this method is supposed to print the entire contents of an entry
+                // The person who originally wrote the code just didn't like pressing the enter key lol
+                // TODO maybe add Address values to result String
+                // I added \n so the code would compile
+                result += "\n" + current.nameLast + ", " + current.nameFirst + " | " + "\n";
                         current = current.next;
-            }
+            } // end of while loop
             return result;
-        }
-    }
+        } // end of if/else
+    } // end of toString method
 
+    // toString method that returns the
     public String toString (int index) {
         PhonebookNode current = nodeAt(index);
-        String result = current.nameLast + ", " + current.nameFirst + " | " + current.nameFirst; ////what goes here
+        // Same issue as previous toString method
+        // TODO maybe add Address values here too
+        String result = current.nameLast + ", " + current.nameFirst + " | " + "\n";
         return result;
-    }
-}
+    } // end of toString method
+} // end of ListNode
 
     // node should contain at least name, address, city, and phone number fields in the phonebook node
 

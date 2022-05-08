@@ -20,7 +20,7 @@ public class PhonebookTestMain {
         System.out.println("Here are the Phone Book entries for Bellingham:");
         System.out.println();
         // This doesn't work :(
-        System.out.println(display(bellingham));
+        bellingham.display();
 
 
         //bellingham.transferTo(seattle, bellingham.get("David"));

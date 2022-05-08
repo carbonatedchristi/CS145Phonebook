@@ -7,11 +7,11 @@
 package PhoneBook;
 public class PhonebookManager {
 
-    private ListNode front;
+    private static ListNode front;
 
     // PhonebookManager constructor
     public PhonebookManager(String city) {
-        // TODO maybe?
+        ListNode node = new ListNode();
     } // end of PhonebookManager constructor
 
     // TODO move method, would shift entries around
@@ -111,7 +111,7 @@ public class PhonebookManager {
 
 
     //returns a reference to the phonebook entry at the given index
-    private ListNode nodeAt(int index) {
+    private static ListNode nodeAt(int index) {
         ListNode current = front;
         for (int i = 0; i < index; i++) {
             current = current.next;
@@ -121,13 +121,14 @@ public class PhonebookManager {
 
 
     //display method,
-    public void display()
+    public static void display()
     {
-        ListNode current = front;
+        ListNode current;
+        current = front;
 
         while (current.next != null)
         {
-            System.out.println(current.nameFirst);
+            System.out.println(current.toString());
             current = current.next;
         } // end of while loop
         System.out.println(current.nameFirst);

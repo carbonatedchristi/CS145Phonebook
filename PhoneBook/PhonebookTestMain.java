@@ -4,18 +4,24 @@
 // Class: CS145 Hybrid01
 
 package PhoneBook;
+
 public class PhonebookTestMain {
 
     public static void main(String[] args) {
         PhonebookManager bellingham = new PhonebookManager("Bellingham");
-        PhonebookManager seattle = new PhonebookManager("Seattle");
+        //PhonebookManager seattle = new PhonebookManager("Seattle");
 
-        bellingham.add("First", "Last", "Address", "City", "ZipCode");
+        bellingham.add("FirstName1", "LastName1", "Address1", "City1", "ZipCode1");
+        bellingham.add("FirstName2", "LastName2", "Address2", "City2", "ZipCode2");
+        bellingham.add("FirstName3", "LastName3", "Address3", "City3", "ZipCode3");
+        bellingham.add("FirstName4", "LastName4", "Address4", "City4", "ZipCode4");
+        bellingham.add("FirstName5", "LastName5", "Address5", "City5", "ZipCode5");
 
-        System.out.println("I ---------");
+        System.out.println("Here are the Phone Book entries for Bellingham:");
         System.out.println();
-        System.out.println(bellingham);
-        System.out.println(seattle);
+        // This doesn't work :(
+        System.out.println(display(bellingham));
+
 
         //bellingham.transferTo(seattle, bellingham.get("David"));
         //bellingham.transferTo(seattle, bellingham.get("Rebecca"));

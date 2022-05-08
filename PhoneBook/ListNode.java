@@ -19,7 +19,7 @@ package PhoneBook;
     public class ListNode {
         // node should contain at least name, address, city, and phone number fields in the phonebook node
 
-        private ListNode front;
+        private static ListNode front;
         protected String nameFirst;
         protected String nameLast;
         protected String address;
@@ -104,7 +104,7 @@ package PhoneBook;
 
     // TODO probably delete, copied into PhonebookManager
     //returns a reference to the phonebook entry at the given index
-    public ListNode nodeAt(int index) {
+    protected static ListNode nodeAt(int index) {
         ListNode current = front;
         for (int i = 0; i < index; i++) {
             current = current.next;

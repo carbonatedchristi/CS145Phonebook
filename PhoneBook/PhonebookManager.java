@@ -20,7 +20,7 @@ public class PhonebookManager {
     public void add(String nameFirst, String nameLast,
                     String address, String city, String number)
     {
-        ListNode node = new ListNode();
+        ListNode node = new ListNode(nameFirst, nameLast, address, city, number);
 
         if (front == null)
         {
@@ -38,6 +38,9 @@ public class PhonebookManager {
     } // end of add method
 
 
+    /* TODO will probably delete this method, instead we'll have two add methods and a sorting method
+    // 1st add method will put the new entry at the end of the list
+    // 2nd add method will add the new entry at an index
     //adds a given phonebook entry and places it in the list in alphabetical order
     public void add(String nameFirst, String nameLast,
                     String address, String city, String number, int extraValue) {
@@ -64,6 +67,8 @@ public class PhonebookManager {
 
         } // end of if/else
     } // end of add method
+    */
+
 
     // remove method, deletes node at the given index
     public void remove(int index) {
@@ -122,10 +127,10 @@ public class PhonebookManager {
 
         while (current.next != null)
         {
-            System.out.println(current.NameFirst);
+            System.out.println(current.nameFirst);
             current = current.next;
         } // end of while loop
-        System.out.println(current.data);
+        System.out.println(current.nameFirst);
 
     } // end of display method
 

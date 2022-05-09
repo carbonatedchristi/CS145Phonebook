@@ -1,41 +1,50 @@
+
 //Programmers: Christina Mymrin
 //             Hannah Hendrickson
 // Assignment 2 PhoneBook
 // Class: CS145 Hybrid01
+       //manager will allow you to either add an entry
+         //(name, address, city, phone #) to the end and then sort it,    } // end of PhoneBookManager
+ //or alphabetically by last name.  You can also modify the entry,
+ //delete entries, or move them from the Bellingham to the Seattle
+ //phone book (optional).  Finally, you should be able to print out
+ //your list in a nice format.
+/*
+    package PhoneBook;
 
+import PhoneBook.ListNode;
 
-package PhoneBook;
 public class PhonebookManager {
 
-    private static ListNode front;
+        private ListNode front;
 
-    // PhonebookManager constructor
-    public PhonebookManager(String city) {
-        ListNode node = new ListNode();
-    } // end of PhonebookManager constructor
+        // PhonebookManager constructor
+        public PhonebookManager(String city) {
+            // TODO maybe?
+        } // end of PhonebookManager constructor
 
-    // TODO move method, would shift entries around
+        // TODO move method, would shift entries around
 
-    // add method, simply adds new node to end of list
-    public void add(String nameFirst, String nameLast,
-                    String address, String city, String number)
-    {
-        ListNode node = new ListNode(nameFirst, nameLast, address, city, number);
-
-        if (front == null)
+        // add method, simply adds new node to end of list
+        public void add(String nameFirst, String nameLast,
+                        String address, String city, String number)
         {
-            front = node;
-        }
-        else
-        {
-            ListNode current = front;
-            while(current.next != null)
+            ListNode node = new ListNode(nameFirst, nameLast, address, city, number);
+
+            if (front == null)
             {
-                current = current.next;
-            } // end of while loop
-            current.next = node;
-        } // end of if/else
-    } // end of add method
+                front = node;
+            }
+            else
+            {
+                ListNode current = front;
+                while(current.next != null)
+                {
+                    current = current.next;
+                } // end of while loop
+                current.next = node;
+            } // end of if/else
+        } // end of add method
 
 
     /* TODO will probably delete this method, instead we'll have two add methods and a sorting method
@@ -45,7 +54,6 @@ public class PhonebookManager {
     public void add(String nameFirst, String nameLast,
                     String address, String city, String number, int extraValue) {
         int index = 0;
-
         if (front == null) {
             // if list is empty, adds first value
             add(nameFirst, nameLast, address, city, number); // Deleted the 0 that was the last value
@@ -59,88 +67,78 @@ public class PhonebookManager {
                     add(nameFirst, nameLast, address, city, number, index);
                     return;
                 } // end of if
-
                 current = current.next;
                 index++;
             } while (current.next != null);
             current.next = new ListNode(nameFirst, nameLast, address, city, number);
-
         } // end of if/else
     } // end of add method
-    */
 
 
-    // remove method, deletes node at the given index
-    public void remove(int index) {
-        if (index ==0) {
-            front = front.next;
-        } else {
-            ListNode current = nodeAt(index - 1);
-            current.next = current.next.next; //<-- maybe rename .next to make less confusing
-        } // end of if/else
-    } // end of remove method
+/*
+        // remove method, deletes node at the given index
+        public void remove(int index) {
+            if (index ==0) {
+                front = front.next;
+            } else {
+                ListNode current = nodeAt(index - 1);
+                current.next = current.next.next; //<-- maybe rename .next to make less confusing
+            } // end of if/else
+        } // end of remove method
 
-    // modifyNameLast method, changes the last name in the entry of the given index
-    public void modifyNameLast(String nameLast, int index) {
-        ListNode current = ListNode.nodeAt(index);
+        // modifyNameLast method, changes the last name in the entry of the given index
+        public void modifyNameLast(String nameLast, int index) {
+            ListNode current = ListNode.nodeAt(index);
 
-        current.nameLast = nameLast;
-    } // end of modifyNameLast method
+            current.nameLast = nameLast;
+        } // end of modifyNameLast method
 
-    // modifyNameFirst method, changes first name in the entry of given index
-    public void modifyNameFirst(String nameFirst, int index) {
-        ListNode current = nodeAt(index);
+        // modifyNameFirst method, changes first name in the entry of given index
+        public void modifyNameFirst(String nameFirst, int index) {
+            ListNode current = nodeAt(index);
 
-        current.nameFirst = nameFirst;
-    } // end of modifyNameFirst method
-
-
-    // modifyCity method, changes city name in the entry of given index
-    public void modifyCity(String city, int index) {
-        ListNode current = nodeAt(index);
-
-        current.city = city;
-    } // end of modifyCity method
-
-    //modifies num of the given entry to the given string
-    public void modifyNumber(String number, int index) {
-        ListNode current = nodeAt(index);
-
-        current.number = number;
-    } // end of modifyNumber method
+            current.nameFirst = nameFirst;
+        } // end of modifyNameFirst method
 
 
-    //returns a reference to the phonebook entry at the given index
-    private static ListNode nodeAt(int index) {
-        ListNode current = front;
-        for (int i = 0; i < index; i++) {
-            current = current.next;
-        } // end of for loop
-        return current;
-    } // end of nodeAt method
+        // modifyCity method, changes city name in the entry of given index
+        public void modifyCity(String city, int index) {
+            ListNode current = nodeAt(index);
+
+            current.city = city;
+        } // end of modifyCity method
+
+        //modifies num of the given entry to the given string
+        public void modifyNumber(String number, int index) {
+            ListNode current = nodeAt(index);
+
+            current.number = number;
+        } // end of modifyNumber method
 
 
-    //display method,
-    public static void display()
-    {
-        ListNode current;
-        current = front;
+        //returns a reference to the phonebook entry at the given index
+        //returns a reference to t
+        // he phonebook entry at the given index
+        public ListNode.node nodeAt(int index) {
+            ListNode.node current = front;
+            for (int i = 0; i < index; i++) {
+                current = current.next;
+            } // end of for loop
+            return current;
+        } // end of nodeAt method
 
-        while (current.next != null)
+    //displays all of the cotents of the linked list while theres no null
+    protected void display(ListNode.node front) {
+        while (front != null)
         {
-            System.out.println(current.toString());
-            current = current.next;
-        } // end of while loop
-        System.out.println(current.nameFirst);
+            System.out.print(front.nameFirst + " " + front.nameLast + " " +
+                    front.address + " " + front.city + " " + front.number + " \n");
 
-    } // end of display method
-
-    //manager will allow you to either add an entry
-    //(name, address, city, phone #) to the end and then sort it,
-    //or alphabetically by last name.  You can also modify the entry,
-    //delete entries, or move them from the Bellingham to the Seattle
-    //phone book (optional).  Finally, you should be able to print out
-    //your list in a nice format.
+            //moves the front to the next node after previous node has been printed
+            front = front.next;
+        }
+    }
+    }
+*/
 
 
-} // end of PhoneBookManager

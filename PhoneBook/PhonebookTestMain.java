@@ -18,6 +18,9 @@ public class PhonebookTestMain {
             System.out.println("Here are the entries for Bellingham!: ");
             bellingham.display(bellingham.front);
 
+            System.out.println();
+            System.out.println(bellingham.getEntry("lastname2"));
+
         }
 
     // TODO menu methods

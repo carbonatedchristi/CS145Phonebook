@@ -33,7 +33,7 @@ public class ListNode {
             this.number = number;
         }
 
-    }
+    } // end of protected node class
 
 
     //adds a new entry to the linked list
@@ -83,8 +83,10 @@ public class ListNode {
         } // end of if
         do { //iterate through list and check if given last name is found
             if (nameLast.equalsIgnoreCase(current.nameLast)) {
+
                 return index;
             } // end of if
+            current = current.next;
             index++;
         } while (current.next != null);
 

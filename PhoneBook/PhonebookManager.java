@@ -16,16 +16,10 @@ public class PhonebookManager
 
     protected static ListNode front;
 
-    /*
-    // PhonebookManager constructor
-    public PhonebookManager(String city) {
-        super();
-        // TODO I'm unsure if this constructor is necessary
-        this.city = city;
+    public PhonebookManager()
+    {
+        this.front = nodeAt(0);
     } // end of PhonebookManager constructor
-    */
-
-    // TODO move method, would shift entries around
 
     // add method, simply adds new node to end of list
     public static void add(String nameFirst, String nameLast,
@@ -87,7 +81,7 @@ public class PhonebookManager
         else
         {
             current = nodeAt(index - 1);
-            current.next = current.next.next; //<-- maybe rename .next to make less confusing
+            current.next = current.next.next;
         } // end of if/else
     } // end of remove method
 
@@ -124,8 +118,6 @@ public class PhonebookManager
 
 
     //returns a reference to the phonebook entry at the given index
-    //returns a reference to t
-    // he phonebook entry at the given index
     public ListNode nodeAt(int index)
         throws NullPointerException
     {
@@ -241,6 +233,54 @@ public class PhonebookManager
 */
 
     } // end of sort method
+
+    public static void powerSwap(ListNode front, ListNode nodeX, ListNode nodeY)
+    {
+        // First we search the linked list for the nodes we want to swap
+        ListNode p = front;
+        ListNode prev = null;
+
+        while (p != null && p != nodeX)
+        {
+            prev = p;
+            p = p.next;
+        } // end of while loop
+        ListNode pX = p;
+        ListNode prevX = prev;
+
+        p = front;
+        prev = null;
+        while (p != null && p != nodeY)
+        {
+            prev = p;
+            p = p.next;
+        } // end of while loop
+        ListNode pY = p;
+        ListNode prevY = prev;
+
+        // Now we swap everything
+        ListNode temp;
+        temp = pY.next;
+        pY.next = pX.next;
+        pX.next = temp;
+
+        if (prevX == null)
+        {
+            front = pY;
+            pY.next = pX;
+        } // end of if
+        if (prevY == null)
+        {
+            pX = front;
+            prevX.next = prevY;
+        } // end of if
+        if (prevX != null && prevY != null)
+        {
+            prevX.next = pY;
+            prevY.next = pX;
+        } // end of if
+
+    } // end of powerSort method
 
     // swap method, intakes two nodes and swaps their positions
     public static void swap(ListNode node1, ListNode node2)

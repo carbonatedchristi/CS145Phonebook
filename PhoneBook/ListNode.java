@@ -36,6 +36,7 @@ public class ListNode {
     } // end of default constructor
 
 
+    /*
     //adds a new entry to the linked list
     protected void add(String nameFirst, String nameLast, String address, String city, String number)
     {
@@ -46,6 +47,7 @@ public class ListNode {
         newListNode.next = front;
         front = newListNode;
     } // end of add method
+    */
 
     //displays all of the contents of the linked list while there's no null
     protected void display(ListNode front) {

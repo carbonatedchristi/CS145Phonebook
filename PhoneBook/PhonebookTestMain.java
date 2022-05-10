@@ -12,12 +12,15 @@ public class PhonebookTestMain
 {
     public static void main(String[] args)
     {
+        /*
         Scanner input = new Scanner(System.in);
 
-        while (userConfirm(input))
+        while (userInput(input))
         {
 
         }
+        */
+
         //PBManager bellingham = new PBManager("Bellingham");
         PhonebookManager bellingham = new PhonebookManager();
         bellingham.add("BeastBoy", "Zebra", "address1", "city1", "number1");
@@ -36,7 +39,7 @@ public class PhonebookTestMain
         //bellingham.sort();
 
         System.out.println("Swapped the first two entries: ");
-        bellingham.swap(bellingham.nodeAt(3), bellingham.nodeAt(4));
+        bellingham.powerSwap(bellingham.front, bellingham.nodeAt(3), bellingham.nodeAt(4));
         bellingham.display(bellingham.front);
 
     } // end of main method
@@ -89,7 +92,7 @@ public class PhonebookTestMain
         return userSelection;
     } // end of menu method
 
-    private void menuAction(char userSelection)
+    private void menuAction(char userSelection, Scanner input)
     {
         switch (userSelection)
         {
@@ -97,7 +100,7 @@ public class PhonebookTestMain
                 PhonebookManager.display(PhonebookManager.front);
                 break;
             case 'a':
-                PhonebookManager.add
+                userCreateNode(input);
         }
     } // end of menuSelect
 

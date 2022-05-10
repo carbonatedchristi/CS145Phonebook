@@ -14,7 +14,7 @@ package PhoneBook;
 public class PhonebookManager
 {
 
-    protected ListNode front;
+    protected static ListNode front;
 
     /*
     // PhonebookManager constructor
@@ -28,8 +28,8 @@ public class PhonebookManager
     // TODO move method, would shift entries around
 
     // add method, simply adds new node to end of list
-    public void add(String nameFirst, String nameLast,
-                    String address, String city, String number)
+    public static void add(String nameFirst, String nameLast,
+                           String address, String city, String number)
     {
         ListNode node = new ListNode(nameFirst, nameLast, address, city, number);
 
@@ -170,7 +170,7 @@ public class PhonebookManager
     } // end of getEntry method
 
     //displays all of the contents of the linked list while theres no null
-    protected void display(ListNode front)
+    protected static void display(ListNode front)
     {
         ListNode current = front;
         while (current != null)
@@ -199,6 +199,7 @@ public class PhonebookManager
         ListNode current = front;
         ListNode nodeToCompare;
 
+
         while (current != null)
         {
             nodeToCompare = current.next;
@@ -206,17 +207,47 @@ public class PhonebookManager
             {
                 if (current.nameLast.compareToIgnoreCase(nodeToCompare.nameLast) < 0)
                 {
-                    //ListNode temp = nodeToCompare.next;
+                    // supposed to swap the next values
                     current.setNext(nodeToCompare.next);
                     nodeToCompare.setNext(current);
                 } // end of if
 
-                nodeToCompare = nodeToCompare.next;
+                //nodeToCompare = nodeToCompare.next;
             } // end of inner while
-            display(front);
+
             current = current.next;
         } // end of outer while
-    } // end of mergeSort method
+
+/*
+        // first loop checks the first variable against all others
+        // second loop iterates the checked variable
+        int i = 0;
+        int j;
+        for (current = nodeAt(i); current != null; i++)
+        {
+            nodeToCompare = current.next;
+            j = i;
+            for (nodeToCompare = nodeAt(j+1); nodeToCompare != null; j++)
+            {
+                if (current.getLast().compareToIgnoreCase(nodeToCompare.getLast()) > 0)
+                {
+                    current.setNext(nodeToCompare.next);
+                    nodeToCompare.setNext(current);
+                    nodeToCompare = nodeToCompare.next;
+                } // end of if
+                nodeToCompare = nodeToCompare.next;
+            } // end of while loop
+        } // end of for loop
+*/
+
+    } // end of sort method
+
+    // swap method, intakes two nodes and swaps their positions
+    public static void swap(ListNode node1, ListNode node2)
+    {
+        node1.setNext(node2.next);
+        node2.setNext(node1);
+    } // end of swap method
 
 } // end of PhonebookManager class
 

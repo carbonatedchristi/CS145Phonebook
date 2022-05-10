@@ -143,6 +143,11 @@ public class ListNode {
     {
         this.next = newNext;
     } // end of setNext method
+
+    public String getLast()
+    {
+        return this.nameLast;
+    } // end of getLast
 } // end of ListNode
 
 // ListNode should contain at least name, address, city, and phone number fields in the phonebook ListNode

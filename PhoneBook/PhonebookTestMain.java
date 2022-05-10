@@ -5,12 +5,13 @@
 
 
 package PhoneBook;
-public class PhonebookTestMain {
-
-    public static void main(String[] args) {
+public class PhonebookTestMain
+{
+    public static void main(String[] args)
+    {
 
             //PBManager bellingham = new PBManager("Bellingham");
-            ListNode bellingham = new ListNode();
+            PhonebookManager bellingham = new PhonebookManager();
             bellingham.add("firstname1", "lastname1", "address1", "city1", "number1");
             bellingham.add("firstname2", "lastname2", "address2", "city2", "number2");
             bellingham.add("firstname3", "lastname3", "address3", "city3", "number3");
@@ -21,7 +22,7 @@ public class PhonebookTestMain {
             System.out.println();
             System.out.println(bellingham.getEntry("lastname2"));
 
-        }
+    } // end of main method
 
     // TODO menu methods
 

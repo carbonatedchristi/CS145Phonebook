@@ -127,10 +127,18 @@ public class PhonebookManager
     //returns a reference to t
     // he phonebook entry at the given index
     public ListNode nodeAt(int index)
+        throws NullPointerException
     {
         ListNode current = front;
+
         for (int i = 0; i < index; i++)
         {
+            if (current.next == null)
+            {
+                // cuts the method short if the next node is null
+                // this avoids NullPointerException
+                return current;
+            } // end of if
             current = current.next;
         } // end of for loop
         return current;
@@ -164,15 +172,51 @@ public class PhonebookManager
     //displays all of the contents of the linked list while theres no null
     protected void display(ListNode front)
     {
-        while (front != null)
+        ListNode current = front;
+        while (current != null)
         {
-            System.out.print(front.nameFirst + " " + front.nameLast + " " +
-                    front.address + " " + front.city + " " + front.number + " \n");
+            System.out.print(current.nameLast + ", " + current.nameFirst + " (" +
+                    current.address + ", " + current.city + ", " + current.number + ")\n");
 
             //moves the front to the next node after previous node has been printed
-            front = front.next;
+            current = current.next;
         } // end of while loop
     } // end of display method
+
+    // size method, returns the number of entries in the phonebook
+    public int size() {
+        int count = 0;
+        ListNode current = front;
+        while (current != null) {
+            current = current.next;
+            count++;
+        } // end of while
+        return count;
+    } // end of size method
+
+    protected void sort()
+    {
+        ListNode current = front;
+        ListNode nodeToCompare;
+
+        while (current != null)
+        {
+            nodeToCompare = current.next;
+            while (nodeToCompare != null)
+            {
+                if (current.nameLast.compareToIgnoreCase(nodeToCompare.nameLast) < 0)
+                {
+                    //ListNode temp = nodeToCompare.next;
+                    current.setNext(nodeToCompare.next);
+                    nodeToCompare.setNext(current);
+                } // end of if
+
+                nodeToCompare = nodeToCompare.next;
+            } // end of inner while
+            display(front);
+            current = current.next;
+        } // end of outer while
+    } // end of mergeSort method
 
 } // end of PhonebookManager class
 

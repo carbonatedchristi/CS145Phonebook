@@ -30,6 +30,11 @@ public class ListNode {
         this.number = number;
     } // end of ListNode constructor
 
+    public ListNode()
+    {
+
+    } // end of default constructor
+
 
     //adds a new entry to the linked list
     protected void add(String nameFirst, String nameLast, String address, String city, String number)
@@ -54,6 +59,7 @@ public class ListNode {
         } // end of while loop
     } // end of display method
 
+    /*
     // size method, returns the number of entries in the phonebook
     public int size(ListNode front) {
         //this.front = front;
@@ -65,6 +71,8 @@ public class ListNode {
         } // end of while
         return count;
     } // end of size method
+    */
+
 
     //returns a reference to the phonebook entry at the given index
     //returns a reference to t
@@ -130,6 +138,11 @@ public class ListNode {
         // TODO maybe add Address values here too
         return current.nameLast + ", " + current.nameFirst + " | " + "/n";
     } // end of toString method
+
+    public void setNext(ListNode newNext)
+    {
+        this.next = newNext;
+    } // end of setNext method
 } // end of ListNode
 
 // ListNode should contain at least name, address, city, and phone number fields in the phonebook ListNode

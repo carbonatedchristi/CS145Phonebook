@@ -12,14 +12,14 @@ public class PhonebookTestMain
 {
     public static void main(String[] args)
     {
-        /*
+
         Scanner input = new Scanner(System.in);
 
         while (userInput(input))
         {
 
         }
-        */
+
 
         //PBManager bellingham = new PBManager("Bellingham");
         PhonebookManager bellingham = new PhonebookManager();
@@ -35,12 +35,6 @@ public class PhonebookTestMain
         bellingham.display(bellingham.front);
 
         System.out.println();
-        //System.out.println(bellingham.getEntry("lastname2"));
-        //bellingham.sort();
-
-        System.out.println("Swapped the first two entries: ");
-        bellingham.powerSwap(bellingham.front, bellingham.nodeAt(3), bellingham.nodeAt(4));
-        bellingham.display(bellingham.front);
 
     } // end of main method
 

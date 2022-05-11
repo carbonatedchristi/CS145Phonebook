@@ -16,10 +16,12 @@ public class PhonebookManager
 
     protected static ListNode front;
 
+    /*
     public PhonebookManager()
     {
         this.front = nodeAt(0);
     } // end of PhonebookManager constructor
+    */
 
     // add method, simply adds new node to end of list
     public static void add(String nameFirst, String nameLast,
@@ -77,6 +79,10 @@ public class PhonebookManager
         if (index == 0)
         {
             front = front.next;
+        }
+        else if(nodeAt(index).next == null)
+        {
+            nodeAt(index -1).next = null;
         }
         else
         {
@@ -165,13 +171,16 @@ public class PhonebookManager
     protected static void display(ListNode front)
     {
         ListNode current = front;
+        int i = 1;
+        // iterates through the linked list, adds a number to each entry
         while (current != null)
         {
-            System.out.print(current.nameLast + ", " + current.nameFirst + " (" +
+            System.out.print(i + ". " + current.nameLast + ", " + current.nameFirst + " (" +
                     current.address + ", " + current.city + ", " + current.number + ")\n");
 
             //moves the front to the next node after previous node has been printed
             current = current.next;
+            i++;
         } // end of while loop
     } // end of display method
 

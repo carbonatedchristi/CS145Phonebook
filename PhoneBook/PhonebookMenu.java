@@ -4,14 +4,11 @@ import java.util.Scanner;
 public class PhonebookMenu
 {
     protected static char userSelection;
-    protected static boolean userConfirm = false;
-    protected static boolean userAddEntry = false;
-    protected static boolean userRemoveEntry = false;
-    Scanner input = new Scanner(System.in);
+    protected boolean userRemoveEntry;
 
     protected static boolean userInput(Scanner input)
     {
-
+        boolean userConfirm = false;
         char userResponse;
         System.out.printf("Would you like to use a phonebook? ");
 
@@ -41,47 +38,62 @@ public class PhonebookMenu
         return false;
     } // end of userInput method
 
-    protected static void menu(Scanner input) {
-        char userSelection;
-
+    // printMenu method, displays menu options
+    public static void printMenu()
+    {
         System.out.printf("Please make a selection and type the corresponding letter.%n%n");
         System.out.println("|v| View the phonebook.");
         System.out.println("|a| Add an entry to the phonebook.");
-        System.out.println("|s| Sort the phonebook by last name.");
         System.out.println("|r| Remove an entry from the phonebook.");
         System.out.println("|m| Modify an entry in the phonebook.");
+        System.out.println("|q| Quit the program");
+    } // end of printMenu method
+
+    protected static void menuSelect(PhonebookManager cityBook)
+    {
+        Scanner input = new Scanner(System.in);
+        char userSelection = 'z';
+        boolean validSelection = false;
 ////////////////reput whatever for the case s, r, m, (the prints are to test if it works)//////////////////////////////////
         do {
 
             userSelection = input.next().charAt(0);
             userSelection = Character.toLowerCase(userSelection);
-            switch (userSelection) {
+            switch (userSelection)
+            {
                 case 'v':
-                    //System.out.print("view");
-                    PhonebookManager.display(PhonebookManager.front); //////////////not working here :(//////////////
-                   //bellingham.display(bellingham.front);
+                    System.out.printf("Here is the phonebook:%n%n");
+                   cityBook.display(cityBook.front);
+                    validSelection = true;
                     break;
                 case 'a':
-                    userAddEntry = true;
-                    //returns to main, where add method will start running
+                    userCreateNode(cityBook);
+                    validSelection = true;
                     return;
-                case 's':
-                    System.out.print("Sort");
                 case 'r':
-                    userRemoveEntry = true;
-                    System.out.print("Remove");
+                    userRemoveNode(cityBook);
+                    validSelection = true;
+                    break;
                 case 'm':
                     System.out.print("Modify");
-            }
+                    validSelection = true;
+                    break;
+                case 'q':
+                    validSelection = true;
+                    return;
+                default:
+                    System.out.printf("%nInvalid Selection.%n%n");
+                    validSelection = false;
+                    break;
+            } // end of switch case
 
-        } while (userSelection != 'v' || userSelection != 'a' ||
-                userSelection != 's' || userSelection != 'r' ||
-                userSelection != 'm');
-    }
+        } while (!validSelection);
+    } // end of menu method
 
 
-    public static void userCreateNode(Scanner input)
+    public static void userCreateNode(PhonebookManager cityBook)
     {
+        Scanner input = new Scanner(System.in);
         String firstName;
         String lastName;
         String address;
@@ -89,23 +101,48 @@ public class PhonebookMenu
         String phoneNum;
 
         System.out.printf("%n%nPlease type in a First Name %n");
-        firstName = input.next();
+        firstName = input.nextLine();
         System.out.printf("Please type in a Last Name %n");
-        lastName = input.next();
+        lastName = input.nextLine();
         System.out.printf("Please type in an Address %n");
-        address = input.next();
+        address = input.nextLine();
         System.out.printf("Please type in City %n");
-        city = input.next();
+        city = input.nextLine();
         System.out.printf("Please type in a Phone Number%n");
-        phoneNum = input.next();
+        phoneNum = input.nextLine();
 
-        PhonebookManager.add(firstName, lastName, address, city, phoneNum);
+        cityBook.add(firstName, lastName, address, city, phoneNum);
     } // end of userCreateNode method
 
-    public static void userRemoveNode(Scanner input) {
+    public static void userRemoveNode(PhonebookManager cityBook)
+    {
+        boolean noException = false;
+        boolean userIndexWithinBounds = false;
+        int indexToRemove = -1;
+        Scanner input = new Scanner(System.in);
 
-    }
-/* commented out to test above methods
+        do
+        {
+            // try/catch will ensure the user enters a number
+            try
+            {
+                System.out.printf("%nPlease enter the number of the entry to remove:");
+                indexToRemove = input.nextInt();
+                input.nextLine();
+                if (indexToRemove > 0 && indexToRemove <= cityBook.size())
+                {
+                    userIndexWithinBounds = true;
+                } // end of if
+                noException = true;
+            } // end of try
+            catch (Exception e)
+            {
+                // empty because code will loop
+            } // end of catch
+        } while(!noException && !userIndexWithinBounds);
+        cityBook.remove(indexToRemove - 1);
+    } // end of userRemoveNode
+
     public static String userString(Scanner input)
     {
         String userEntry = "";
@@ -123,9 +160,8 @@ public class PhonebookMenu
                 // empty because code will loop
             } // end of try/catch
 
-
         } while (!exceptionTriggered);
         return userEntry;
     } // end of userString
-*/
-} // end of PhonebookTestMain
+
+} // end of PhonebookMenu

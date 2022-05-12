@@ -1,7 +1,18 @@
+//Programmers: Christina Mymrin
+//             Hannah Hendrickson
+// Assignment 2 PhoneBook
+// Class: CS145 Hybrid01
+// Date: 05/13/2022
+// Purpose: This program creates a linkedlist for use as a phonebook.
+// A user can add, remove, modify, and search for entries via a menu.
+// The menu can also view the entire phonebook printed to the console.
+
+// Notes for ListNode:
+
 package PhoneBook;
-//add names/class and stuff
-//TODO: move add, display, ListNode ListNodeAt() methods to pbmanager
-public class ListNode {
+
+public class ListNode
+{
 
     //changed: rewrote some methods, also most notably changed
     //         the access modifiers to the most protected/protected
@@ -12,7 +23,6 @@ public class ListNode {
      */
 
 
-    //cant be protected: maybe initialize it in a method rather than global
     protected ListNode front;
     protected String nameFirst;
     protected String nameLast;
@@ -22,7 +32,8 @@ public class ListNode {
     protected ListNode next;
 
     //ListNode constructor method
-    public ListNode(String nameFirst, String nameLast, String address, String city, String number) {
+    public ListNode(String nameFirst, String nameLast, String address, String city, String number)
+    {
         this.nameFirst = nameFirst;
         this.nameLast = nameLast;
         this.address = address;
@@ -30,11 +41,12 @@ public class ListNode {
         this.number = number;
     } // end of ListNode constructor
 
+    /*
     public ListNode()
     {
 
     } // end of default constructor
-
+    */
 
     /*
     //adds a new entry to the linked list
@@ -115,11 +127,15 @@ public class ListNode {
 
 
     //toString method that lists all entries in a phonebook
-    public String toString() {
-        if (front == null) {
+    public String toString()
+    {
+        if (front == null)
+        {
             return "The phonebook is empty!";
 
-        } else {
+        } // end of if
+        else
+        {
             String result = front.nameLast + ", " + front.nameFirst + " | " + front.address;
             ListNode current = front.next;
             while (current != null) {
@@ -131,11 +147,12 @@ public class ListNode {
                 current = current.next;
             } // end of while loop
             return result;
-        } // end of if/else
+        } // end of else
     } // end of toString method
 
     // toString method, returns string representation of node at given index
-    public String toString (int index) {
+    public String toString (int index)
+    {
         ListNode current = nodeAt(index);
 
         return current.nameLast + ", " + current.nameFirst + " (" +

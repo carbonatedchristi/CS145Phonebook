@@ -2,12 +2,12 @@
 //             Hannah Hendrickson
 // Assignment 2 PhoneBook
 // Class: CS145 Hybrid01
-       //manager will allow you to either add an entry
-         //(name, address, city, phone #) to the end and then sort it,    } // end of PhoneBookManager
- //or alphabetically by last name.  You can also modify the entry,
- //delete entries, or move them from the Bellingham to the Seattle
- //phone book (optional).  Finally, you should be able to print out
- //your list in a nice format.
+// Date: 05/13/2022
+// Purpose: This program creates a linkedlist for use as a phonebook.
+// A user can add, remove, modify, and search for entries via a menu.
+// The menu can also view the entire phonebook printed to the console.
+
+// Notes for PhonebookManager:
 
 package PhoneBook;
 
@@ -15,15 +15,7 @@ import java.util.Scanner;
 
 public class PhonebookManager
 {
-
     protected static ListNode front;
-
-    /*
-    public PhonebookManager()
-    {
-        this.front = nodeAt(0);
-    } // end of PhonebookManager constructor
-    */
 
     // add method, simply adds new node to end of list
     public static void add(String nameFirst, String nameLast,
@@ -45,34 +37,6 @@ public class PhonebookManager
             current.next = node;
         } // end of if/else
     } // end of add method
-
-    /* TODO will probably delete this method, instead we'll have two add methods and a sorting method
-    // 1st add method will put the new entry at the end of the list
-    // 2nd add method will add the new entry at an index
-    //adds a given phonebook entry and places it in the list in alphabetical order
-    public void add(String nameFirst, String nameLast,
-                    String address, String city, String number, int extraValue) {
-        int index = 0;
-        if (front == null) {
-            // if list is empty, adds first value
-            add(nameFirst, nameLast, address, city, number); // Deleted the 0 that was the last value
-        } else {
-            ListNode current = front;
-            //we use this loop to compare the given last name to each entry
-            //if the given last name comes before the current name we insert the given name
-            do {
-                // I believe compareTo method determines if the current last name comes first alphabetically, which would return a -1
-                if (nameLast.compareTo(current.nameLast) <  0 ) {
-                    add(nameFirst, nameLast, address, city, number, index);
-                    return;
-                } // end of if
-                current = current.next;
-                index++;
-            } while (current.next != null);
-            current.next = new ListNode(nameFirst, nameLast, address, city, number);
-        } // end of if/else
-    } // end of add method
-    */
 
     // remove method, deletes node at the given index
     public void remove(int index)
@@ -104,11 +68,12 @@ public class PhonebookManager
         String userSelection = input.next();
         userSelection = userSelection.toLowerCase();
         String nameLast = "";
-        if (userSelection == nameLast) {
+        if (userSelection == nameLast)
+        {
             System.out.println("The last name was found. Please enter the new last name: ");
             nameLast =  input.next();
             return nameLast;
-        }
+        } // end of if
        // ListNode current = nodeAt(index);
 
        // current.nameLast = nameLast;
@@ -131,7 +96,7 @@ public class PhonebookManager
         current.city = city;
     } // end of modifyCity method
 
-    //modifies num of the given entry to the given string
+    //modifyNumber method, changes the number field at the given index
     public void modifyNumber(String number, int index)
     {
         ListNode current = nodeAt(index);
@@ -139,7 +104,7 @@ public class PhonebookManager
     } // end of modifyNumber method
 
 
-    //returns a reference to the phonebook entry at the given index
+    // nodeAt method, returns the node at the given index
     public ListNode nodeAt(int index)
         throws NullPointerException
     {
@@ -158,7 +123,7 @@ public class PhonebookManager
         return current;
     } // end of nodeAt method
 
-    //returns the index num of the entry containing the given last name
+    // getEntry method, returns the index num of the entry containing the given last name
     //returns -1 if phonebook is empty or if no entry found
     public int getEntry(String nameLast)
     {
@@ -172,8 +137,8 @@ public class PhonebookManager
 
         do
         { //iterate through list and check if given last name is found
-            if (nameLast.equalsIgnoreCase(current.nameLast)) {
-
+            if (nameLast.equalsIgnoreCase(current.nameLast))
+            {
                 return index;
             } // end of if
             current = current.next;
@@ -183,7 +148,7 @@ public class PhonebookManager
         return -1;
     } // end of getEntry method
 
-    //displays all of the contents of the linked list while theres no null
+    // display method, prints the formatted contents of each node in list
     protected static void display(ListNode front)
     {
         ListNode current = front;
@@ -201,10 +166,12 @@ public class PhonebookManager
     } // end of display method
 
     // size method, returns the number of entries in the phonebook
-    public int size() {
+    public int size()
+    {
         int count = 0;
         ListNode current = front;
-        while (current != null) {
+        while (current != null)
+        {
             current = current.next;
             count++;
         } // end of while

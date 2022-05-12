@@ -1,3 +1,15 @@
+//Programmers: Christina Mymrin
+//             Hannah Hendrickson
+// Assignment 2 PhoneBook
+// Class: CS145 Hybrid01
+// Date: 05/13/2022
+// Purpose: This program creates a linkedlist for use as a phonebook.
+// A user can add, remove, modify, and search for entries via a menu.
+// The menu can also view the entire phonebook printed to the console.
+
+// Notes for PhonebookMenu: Loops and try/catches were used to ensure
+// that the user can't crash the program via invalid entries.
+
 package PhoneBook;
 import java.util.Random;
 import java.util.Scanner;
@@ -92,7 +104,7 @@ public class PhonebookMenu
         } while (!validSelection);
     } // end of menu method
 
-
+    // userCreateNode method, intakes user's string entries and creates a node
     public static void userCreateNode(PhonebookManager cityBook)
     {
         Scanner input = new Scanner(System.in);

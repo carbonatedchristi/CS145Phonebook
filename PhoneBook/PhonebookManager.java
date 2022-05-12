@@ -11,6 +11,8 @@
 
 package PhoneBook;
 
+import java.util.Scanner;
+
 public class PhonebookManager
 {
 
@@ -91,12 +93,26 @@ public class PhonebookManager
         } // end of if/else
     } // end of remove method
 
-    // modifyNameLast method, changes the last name in the entry of the given index
-    public void modifyNameLast(String nameLast, int index)
-    {
-        ListNode current = nodeAt(index);
 
-        current.nameLast = nameLast;
+    //TODO: this isnt included in the main method, however it does have structures for line 116 usermodifynode() method
+    // in the PhonebookMenu class, so keep for now for reference
+    //modifyNameLast method, changes the last name in the entry of the given index
+    public static String modifyNameLast()
+    {
+        Scanner input = new Scanner(System.in);
+        System.out.println("pb managPlease enter the current first name of the entry you would like to modify:");
+        String userSelection = input.next();
+        userSelection = userSelection.toLowerCase();
+        String nameLast = "";
+        if (userSelection == nameLast) {
+            System.out.println("The last name was found. Please enter the new last name: ");
+            nameLast =  input.next();
+            return nameLast;
+        }
+       // ListNode current = nodeAt(index);
+
+       // current.nameLast = nameLast;
+        return userSelection;
     } // end of modifyNameLast method
 
     // modifyNameFirst method, changes first name in the entry of given index

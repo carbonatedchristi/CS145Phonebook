@@ -75,8 +75,7 @@ public class PhonebookMenu
                     validSelection = true;
                     break;
                 case 'm':
-                    System.out.print("Modify");
-                    validSelection = true;
+                    userModifyNode(cityBook); //goes to modifynode method where user decides what string to modify
                     break;
                 case 'q':
                     validSelection = true;
@@ -113,6 +112,59 @@ public class PhonebookMenu
 
         cityBook.add(firstName, lastName, address, city, phoneNum);
     } // end of userCreateNode method
+
+    public static void userModifyNode(PhonebookManager cityBook) {
+
+        Scanner input = new Scanner(System.in);
+        do {
+            System.out.println("Here are the phonebook entries: \n");
+            cityBook.display(cityBook.front);
+            System.out.println("\n\nPlease type in the entry you would like to modify: " +
+                    "\n |f| first name" +
+                    "\n |l| last name" +
+                    "\n |a| address" +
+                    "\n |c| city" +
+                    "\n |p| phone number");
+            userSelection = input.next().charAt(0);
+            userSelection = Character.toLowerCase(userSelection);
+            ///////////////////TODO: put actual comparison methods here after each case sysoutprint
+            switch (userSelection)
+            {
+                case 'f':
+                    System.out.println("Please enter the current first name of the entry you would like to modify:");
+                        //STRUCTURE:
+                    //obtain userinput, make it lowercase
+                    //compare that to a lowercase of the strings in the phonebook? (like if userinput = firstName)
+                    //(cont) ask for new userinput for last name then set firstName = newUserInput. something like that
+                    //last resort could be an override boolean? not gonna be pretty tho :(
+                        //and then basically do that for all other types like lastname, address, etc.
+                    return;
+                case 'l':
+                    System.out.println("Please enter the current last name of the entry you would like to modify:");
+
+                    return;
+                case 'a':
+                    System.out.println("Please enter the current address of the entry you would like to modify:");
+                    //validSelection = true;
+                    return;
+                case 'c':
+                    System.out.println("Please enter the current city of the entry you would like to modify:");
+                    //validSelection = true;
+                    return;
+                case 'p':
+                    System.out.println("Please enter the current phone number of the entry you would like to modify:");
+                    //validSelection = true;
+                    return;
+                default:
+                    System.out.printf("%nInvalid Selection.%n%n");
+                    //validSelection = false;
+                    break;
+            } // end of switch case
+
+
+        } while (userSelection != 'f' || userSelection != 'l' || userSelection !='a' ||
+                 userSelection != 'c' || userSelection != 'p');
+    }
 
     public static void userRemoveNode(PhonebookManager cityBook)
     {

@@ -1,4 +1,5 @@
 package PhoneBook;
+import java.util.Random;
 import java.util.Scanner;
 
 public class PhonebookMenu
@@ -216,4 +217,14 @@ public class PhonebookMenu
         return userEntry;
     } // end of userString
 
+    // pickRandomNum method, returns random number as int
+    // This is just for fun, so the phone numbers can be randomized
+    public static int random7digits()
+    {
+        //Computer picks number randomly between 0 & MAX_RANDOM_NUMBER + 1
+        // 1 is added to offset comp counting from 0
+        Random rand = new Random();
+        int randomNumber = rand.nextInt(9000000) + 1000000;
+        return randomNumber;
+    } // end of pickRandomNumber method
 } // end of PhonebookMenu

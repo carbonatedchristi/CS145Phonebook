@@ -34,11 +34,22 @@ public class PhonebookTestMain {
 
     public static void addTestEntries(PhonebookManager cityBook)
     {
-        cityBook.add("BeastBoy", "Zebra", "address1", "Bellingham", "number1");
-        cityBook.add("Harley", "Yvette", "address2", "Bellingham", "number2");
-        cityBook.add("firstname3", "Zanzibar", "address3", "Bellingham", "number3");
-        cityBook.add("Egg", "Brain", "666 ave", "Bellingham", "12345");
-        cityBook.add("Birdie", "IsADog", "1 Canine Drive", "Bellingham", "00000");
-        cityBook.add("Ginkgo", "IsACat", "OriginalAddress", "CardboardBox", "123243");
+        cityBook.add("BeastBoy", "Zebra", "address1",
+                "Bellingham", "360" + random7digits());
+
+        cityBook.add("Harley", "Yvette", "address2",
+                "Bellingham", "360" + random7digits());
+
+        cityBook.add("firstname3", "Zanzibar", "address3",
+                "Bellingham", "360" + random7digits());
+
+        cityBook.add("Egg", "Brain", "666 ave",
+                "Bellingham", "360" + random7digits());
+
+        cityBook.add("Birdie", "IsADog", "1 Canine Drive",
+                "Bellingham", "360" + random7digits());
+
+        cityBook.add("Ginkgo", "IsACat", "CardboardBox",
+                "Bellingham", "360" + random7digits());
     } // end of addTestEntries method
 } // end of PhonebookTestMain

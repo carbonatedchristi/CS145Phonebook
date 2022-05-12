@@ -7,13 +7,13 @@ public class PhonebookMenu
     protected static char userSelection;
     protected boolean userRemoveEntry;
 
+    // userInput method, processes a yes/no response from user
     protected static boolean userInput(Scanner input)
     {
         boolean userConfirm = false;
         char userResponse;
         System.out.printf("Would you like to use a phonebook? ");
 
-                //ask user if they'd like to open phonebook
         do
         {
                 //grab user input and return to lowercase for comparisons
@@ -50,14 +50,16 @@ public class PhonebookMenu
         System.out.println("|q| Quit the program");
     } // end of printMenu method
 
+    // menuSelect method, evaluates user menu choice and initiates it
     protected static void menuSelect(PhonebookManager cityBook)
     {
         Scanner input = new Scanner(System.in);
         char userSelection = 'z';
         boolean validSelection = false;
-////////////////reput whatever for the case s, r, m, (the prints are to test if it works)//////////////////////////////////
-        do {
 
+        do
+        {
+            // intakes user entry and converts it to lowercase char
             userSelection = input.next().charAt(0);
             userSelection = Character.toLowerCase(userSelection);
             switch (userSelection)
@@ -114,10 +116,12 @@ public class PhonebookMenu
         cityBook.add(firstName, lastName, address, city, phoneNum);
     } // end of userCreateNode method
 
+    // userModifyNode method
     public static void userModifyNode(PhonebookManager cityBook) {
 
         Scanner input = new Scanner(System.in);
-        do {
+        do
+        {
             System.out.println("Here are the phonebook entries: \n");
             cityBook.display(cityBook.front);
             System.out.println("\n\nPlease type in the entry you would like to modify: " +
@@ -165,10 +169,13 @@ public class PhonebookMenu
 
         } while (userSelection != 'f' || userSelection != 'l' || userSelection !='a' ||
                  userSelection != 'c' || userSelection != 'p');
-    }
+    } // end of userModifyNode
 
+    // userRemoveNode method, intakes index int of the entry to be removed
+    // then removes it
     public static void userRemoveNode(PhonebookManager cityBook)
     {
+        // flags to ensure user inputs are valid
         boolean noException = false;
         boolean userIndexWithinBounds = false;
         int indexToRemove = -1;
@@ -186,6 +193,10 @@ public class PhonebookMenu
                 {
                     userIndexWithinBounds = true;
                 } // end of if
+                else
+                {
+                    userIndexWithinBounds = false;
+                } // end of else
                 noException = true;
             } // end of try
             catch (Exception e)
@@ -196,12 +207,15 @@ public class PhonebookMenu
         cityBook.remove(indexToRemove - 1);
     } // end of userRemoveNode
 
+    // userString method, intakes user's string entry and returns it
+    // Can be used for any field of a ListNode object
     public static String userString(Scanner input)
     {
         String userEntry = "";
         boolean exceptionTriggered = true;
         do
         {
+            // ensures no errors stop the program from running
             try
             {
                 System.out.println("Please type your entry: ");
@@ -221,10 +235,11 @@ public class PhonebookMenu
     // This is just for fun, so the phone numbers can be randomized
     public static int random7digits()
     {
-        //Computer picks number randomly between 0 & MAX_RANDOM_NUMBER + 1
-        // 1 is added to offset comp counting from 0
+        //Computer picks number randomly of 7 digits
+        // 1000000 is added to ensure digit value is met
         Random rand = new Random();
         int randomNumber = rand.nextInt(9000000) + 1000000;
         return randomNumber;
     } // end of pickRandomNumber method
-} // end of PhonebookMenu
+
+} // end of PhonebookMenu class

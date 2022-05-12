@@ -49,6 +49,7 @@ public class ListNode {
     } // end of add method
     */
 
+    /*
     //displays all of the contents of the linked list while there's no null
     protected void display(ListNode front) {
         while (front != null)
@@ -60,7 +61,7 @@ public class ListNode {
             front = front.next;
         } // end of while loop
     } // end of display method
-
+    */
     /*
     // size method, returns the number of entries in the phonebook
     public int size(ListNode front) {
@@ -133,19 +134,21 @@ public class ListNode {
         } // end of if/else
     } // end of toString method
 
-    // toString method that returns the
+    // toString method, returns string representation of node at given index
     public String toString (int index) {
         ListNode current = nodeAt(index);
-        // Same issue as previous toString method
-        // TODO maybe add Address values here too
-        return current.nameLast + ", " + current.nameFirst + " | " + "/n";
+
+        return current.nameLast + ", " + current.nameFirst + " (" +
+                current.address + ", " + current.city + ", " + current.number;
     } // end of toString method
 
+    // setNext method, nets the next value of the node called upon
     public void setNext(ListNode newNext)
     {
         this.next = newNext;
     } // end of setNext method
 
+    //getLast method, return last name string
     public String getLast()
     {
         return this.nameLast;

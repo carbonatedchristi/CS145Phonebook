@@ -128,6 +128,27 @@ public class PhonebookMenu
         cityBook.add(firstName, lastName, address, city, phoneNum);
     } // end of userCreateNode method
 
+    public static void modifyNameFirst()
+    {
+        Scanner input = new Scanner(System.in);
+        System.out.println("pb managPlease enter the current first name of the entry you would like to modify:");
+        String userSelection = input.next();
+        userSelection = userSelection.toLowerCase();
+        String nameLast = "";
+        //addTestEntries(bellingham);
+
+        for (int i = 1; i == PhonebookManager.size(); i++)
+        {
+            if (userSelection == PhonebookManager.front.nameFirst) {
+                System.out.println("The last name was found. Please enter the new last name: ");
+                nameLast = input.next();
+            }
+            //return nameLast;
+        } // end of if
+        //ListNode current = nodeAt(index);
+
+        //current.nameFirst = nameFirst;
+    } // end of modifyNameFirst method
     // userModifyNode method
     public static void userModifyNode(PhonebookManager cityBook) {
 
@@ -148,14 +169,24 @@ public class PhonebookMenu
             switch (userSelection)
             {
                 case 'f':
-                    System.out.println("Please enter the current first name of the entry you would like to modify:");
+                    //System.out.println("Please enter the current first name of the entry you would like to modify:");
+                    //String userSelection = input.next();
+                    //userSelection = userSelection.toLowerCase();
+                    //String nameFirst = "";
+                    //if (userSelection == nameFirst)
+                    //{
+                   // System.out.println("The worksst name was found. Please enter the new last name: ");
+                        modifyNameFirst();// =  input.next(); //<--- this is going to pbmanagger
+
+                       // return nameLast;
+                    //} // end of if
                         //STRUCTURE:
                     //obtain userinput, make it lowercase
                     //compare that to a lowercase of the strings in the phonebook? (like if userinput = firstName)
                     //(cont) ask for new userinput for last name then set firstName = newUserInput. something like that
                     //last resort could be an override boolean? not gonna be pretty tho :(
                         //and then basically do that for all other types like lastname, address, etc.
-                    return;
+                    break;
                 case 'l':
                     System.out.println("Please enter the current last name of the entry you would like to modify:");
 

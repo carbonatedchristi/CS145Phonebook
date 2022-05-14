@@ -61,19 +61,23 @@ public class PhonebookManager
     //TODO: this isnt included in the main method, however it does have structures for line 116 usermodifynode() method
     // in the PhonebookMenu class, so keep for now for reference
     //modifyNameLast method, changes the last name in the entry of the given index
-    public static String modifyNameLast()
-    {
+    public static String modifyNameLast() {
         Scanner input = new Scanner(System.in);
-        System.out.println("pb managPlease enter the current first name of the entry you would like to modify:");
+        System.out.println("Please enter the current last name of the entry you would like to modify:");
         String userSelection = input.next();
         userSelection = userSelection.toLowerCase();
-        String nameLast = "";
-        if (userSelection == nameLast)
-        {
-            System.out.println("The last name was found. Please enter the new last name: ");
-            nameLast =  input.next();
-            return nameLast;
-        } // end of if
+
+        //for loop is supposed to loop and search for the last name of every entry in the phonebook
+        for (int i = 1; i = bellingham.size(); i++) {
+            if (userSelection == nameLast) {
+                System.out.println("The last name was found. Please enter the new last name: ");
+                nameLast = input.next();
+                return nameLast;
+            } // end of if
+        } //end of for loop
+    } //end of modifynamelast
+
+        //old code (probably delete)
        // ListNode current = nodeAt(index);
 
        // current.nameLast = nameLast;
@@ -81,12 +85,29 @@ public class PhonebookManager
     } // end of modifyNameLast method
 
     // modifyNameFirst method, changes first name in the entry of given index
-    public void modifyNameFirst(String nameFirst, int index)
+    /*
+    public void modifyNameFirst(int phonebookSize)
     {
-        ListNode current = nodeAt(index);
+        Scanner input = new Scanner(System.in);
+        System.out.println("pb managPlease enter the current first name of the entry you would like to modify:");
+        String userSelection = input.next();
+        userSelection = userSelection.toLowerCase();
+        String nameLast = "";
+        //addTestEntries(bellingham);
 
-        current.nameFirst = nameFirst;
+        for (int i = 1; i == phonebookSize; i++)
+        {
+            if (userSelection == front.nameFirst) {
+                System.out.println("The last name was found. Please enter the new last name: ");
+                nameLast = input.next();
+            }
+            //return nameLast;
+        } // end of if
+        //ListNode current = nodeAt(index);
+
+        //current.nameFirst = nameFirst;
     } // end of modifyNameFirst method
+    */
 
 
     // modifyCity method, changes city name in the entry of given index
@@ -166,7 +187,7 @@ public class PhonebookManager
     } // end of display method
 
     // size method, returns the number of entries in the phonebook
-    public int size()
+    public static int size()
     {
         int count = 0;
         ListNode current = front;

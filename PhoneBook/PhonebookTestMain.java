@@ -17,7 +17,6 @@ import static PhoneBook.PhonebookMenu.*;
 
 public class PhonebookTestMain
 {
-
     public static void main(String[] args)
     {
 
@@ -26,7 +25,10 @@ public class PhonebookTestMain
         PhonebookManager bellingham = new PhonebookManager();
         // populates the linkedlist with sample entries
         addTestEntries(bellingham);
-        System.out.println(bellingham.size());
+        int phonebookSize = bellingham.size();
+        System.out.println("There are " + bellingham.size() + " entries in the phonebook.");
+
+
 
         // For every menu selection completed, the user will be prompted again
         while (userInput(input))

@@ -25,6 +25,8 @@ public class PhonebookTestMain
         PhonebookManager bellingham = new PhonebookManager();
         // populates the linkedlist with sample entries
         addTestEntries(bellingham);
+
+        //bellingham.modifyNameLast(bellingham);
         int phonebookSize = bellingham.size();
         System.out.println("There are " + bellingham.size() + " entries in the phonebook.");
 

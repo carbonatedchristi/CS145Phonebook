@@ -59,7 +59,6 @@ public class PhonebookMenu
         System.out.println("|a| Add an entry to the phonebook.");
         System.out.println("|r| Remove an entry from the phonebook.");
         System.out.println("|m| Modify an entry in the phonebook.");
-        System.out.println("|q| Quit the program");
     } // end of printMenu method
 
     // menuSelect method, evaluates user menu choice and initiates it
@@ -67,7 +66,8 @@ public class PhonebookMenu
     {
         Scanner input = new Scanner(System.in);
         char userSelection = 'z';
-        boolean validSelection = false;
+        // Only changes to false if the user enters an invalid char
+        boolean validSelection = true;
 
         do
         {
@@ -79,22 +79,17 @@ public class PhonebookMenu
                 case 'v':
                     System.out.printf("Here is the phonebook:%n%n");
                    cityBook.display(cityBook.front);
-                    validSelection = true;
                     break;
                 case 'a':
                     userCreateNode(cityBook);
-                    validSelection = true;
-                    return;
+                    break;
                 case 'r':
                     userRemoveNode(cityBook);
-                    validSelection = true;
                     break;
                 case 'm':
-                    userModifyNode(cityBook); //goes to modifynode method where user decides what string to modify
+                    //goes to modifynode method where user decides what string to modify
+                    userModifyNode(cityBook);
                     break;
-                case 'q':
-                    validSelection = true;
-                    return;
                 default:
                     System.out.printf("%nInvalid Selection.%n%n");
                     validSelection = false;
@@ -153,17 +148,19 @@ public class PhonebookMenu
     public static void userModifyNode(PhonebookManager cityBook) {
 
         Scanner input = new Scanner(System.in);
+        // This value changes if the user enters an invalid char
+        boolean validSelection = true;
         do
         {
             System.out.println("Here are the phonebook entries: \n");
             cityBook.display(cityBook.front);
-            System.out.println("\n\nPlease type in the entry you would like to modify: " +
+            System.out.println("\n\nPlease type in the field you would like to modify: " +
                     "\n |f| first name" +
                     "\n |l| last name" +
                     "\n |a| address" +
                     "\n |c| city" +
                     "\n |p| phone number");
-            userSelection = input.next().charAt(0);
+            userSelection = input.nextLine().charAt(0);
             userSelection = Character.toLowerCase(userSelection);
             ///////////////////TODO: put actual comparison methods here after each case sysoutprint
             switch (userSelection)
@@ -188,30 +185,26 @@ public class PhonebookMenu
                         //and then basically do that for all other types like lastname, address, etc.
                     break;
                 case 'l':
-                    System.out.println("Please enter the current last name of the entry you would like to modify:");
-
-                    return;
+                    //System.out.println("Please enter the current last name of the entry you would like to modify:");
+                    cityBook.modifyNameLast(cityBook);
+                    break;
                 case 'a':
                     System.out.println("Please enter the current address of the entry you would like to modify:");
-                    //validSelection = true;
-                    return;
+                    break;
                 case 'c':
                     System.out.println("Please enter the current city of the entry you would like to modify:");
-                    //validSelection = true;
-                    return;
+                    break;
                 case 'p':
                     System.out.println("Please enter the current phone number of the entry you would like to modify:");
-                    //validSelection = true;
-                    return;
+                    break;
                 default:
                     System.out.printf("%nInvalid Selection.%n%n");
-                    //validSelection = false;
+                    validSelection = false;
                     break;
             } // end of switch case
 
 
-        } while (userSelection != 'f' || userSelection != 'l' || userSelection !='a' ||
-                 userSelection != 'c' || userSelection != 'p');
+        } while (!validSelection);
     } // end of userModifyNode
 
     // userRemoveNode method, intakes index int of the entry to be removed
@@ -252,25 +245,17 @@ public class PhonebookMenu
 
     // userString method, intakes user's string entry and returns it
     // Can be used for any field of a ListNode object
-    public static String userString(Scanner input)
+    public static String userString()
     {
+        Scanner input = new Scanner(System.in);
         String userEntry = "";
         boolean exceptionTriggered = true;
         do
         {
-            // ensures no errors stop the program from running
-            try
-            {
-                System.out.println("Please type your entry: ");
-                userEntry = input.nextLine();
-                exceptionTriggered = false;
-            }
-            catch (Exception e)
-            {
-                // empty because code will loop
-            } // end of try/catch
+            System.out.println("Please type your entry: ");
+            userEntry = input.nextLine();
 
-        } while (!exceptionTriggered);
+        } while (userEntry.equals(""));
         return userEntry;
     } // end of userString
 

@@ -57,32 +57,35 @@ public class PhonebookManager
         } // end of if/else
     } // end of remove method
 
-
-    //TODO: this isnt included in the main method, however it does have structures for line 116 usermodifynode() method
-    // in the PhonebookMenu class, so keep for now for reference
-    //modifyNameLast method, changes the last name in the entry of the given index
-    public static String modifyNameLast() {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Please enter the current last name of the entry you would like to modify:");
-        String userSelection = input.next();
-        userSelection = userSelection.toLowerCase();
-
-        //for loop is supposed to loop and search for the last name of every entry in the phonebook
-        for (int i = 1; i = bellingham.size(); i++) {
-            if (userSelection == nameLast) {
-                System.out.println("The last name was found. Please enter the new last name: ");
-                nameLast = input.next();
-                return nameLast;
-            } // end of if
-        } //end of for loop
-    } //end of modifynamelast
+    //modifyNameLast method, changes user's selected last name to another String
+    public void modifyNameLast(PhonebookManager cityBook)
+    {
+        //Scanner input = new Scanner(System.in);
+        String nameToChange;
+        String userString = "";
+        int nodeIndex = -1;
+        boolean changeSuccessful = false;
+        do
+        {
+                System.out.println("First you must select the last name to change.");
+                nameToChange = PhonebookMenu.userString();
+                nodeIndex = cityBook.getNameLast(nameToChange);
+                if (nodeIndex != -1)
+                {
+                    System.out.println("Please enter the new value.");
+                    userString = PhonebookMenu.userString();
+                    nodeAt(nodeIndex).nameLast = userString;
+                    changeSuccessful = true;
+                } // end of if
+        } while (!changeSuccessful);
+    } //end of modifyNameLast method
 
         //old code (probably delete)
        // ListNode current = nodeAt(index);
 
        // current.nameLast = nameLast;
-        return userSelection;
-    } // end of modifyNameLast method
+        //return userSelection;
+   // } // end of modifyNameLast method
 
     // modifyNameFirst method, changes first name in the entry of given index
     /*
@@ -146,12 +149,12 @@ public class PhonebookManager
 
     // getEntry method, returns the index num of the entry containing the given last name
     //returns -1 if phonebook is empty or if no entry found
-    public int getEntry(String nameLast)
+    public int getNameLast(String nameLast)
     {
         ListNode current = front;
         int index = 0;
 
-        if (front == null)
+        if (current == null)
         {
             return -1;
         } // end of if
@@ -165,9 +168,8 @@ public class PhonebookManager
             current = current.next;
             index++;
         } while (current.next != null);
-
         return -1;
-    } // end of getEntry method
+    } // end of getNameLast method
 
     // display method, prints the formatted contents of each node in list
     protected static void display(ListNode front)

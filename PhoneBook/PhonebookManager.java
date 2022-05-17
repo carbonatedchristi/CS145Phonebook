@@ -2,16 +2,17 @@
 //             Hannah Hendrickson
 // Assignment 2 PhoneBook
 // Class: CS145 Hybrid01
-// Date: 05/13/2022
+// Date: 05/17/2022
 // Purpose: This program creates a linkedlist for use as a phonebook.
 // A user can add, remove, modify, and search for entries via a menu.
 // The menu can also view the entire phonebook printed to the console.
+// We both used IntelliJ for our IDE and GitHub for version control.
 
-// Notes for PhonebookManager:
 
 package PhoneBook;
 
-public class PhonebookManager {
+public class PhonebookManager
+{
     protected static ListNode front;
 
     // display method, prints the formatted contents of each node in list
@@ -20,7 +21,8 @@ public class PhonebookManager {
         ListNode current = front;
         int i = 1;
         // iterates through the linked list, adds a number to each entry
-        while (current != null) {
+        while (current != null)
+        {
             System.out.print(i + ". " + current.nameLast + ", " + current.nameFirst + " (" +
                     current.address + ", " + current.city + ", " + current.number + ")\n");
 
@@ -35,7 +37,8 @@ public class PhonebookManager {
     {
         int count = 0;
         ListNode current = front;
-        while (current != null) {
+        while (current != null)
+        {
             current = current.next;
             count++;
         } // end of while
@@ -48,8 +51,10 @@ public class PhonebookManager {
     {
         ListNode current = front;
 
-        for (int i = 0; i < index; i++) {
-            if (current.next == null) {
+        for (int i = 0; i < index; i++)
+        {
+            if (current.next == null)
+            {
                 // cuts the method short if the next node is null
                 // this avoids NullPointerException
                 return current;
@@ -65,29 +70,38 @@ public class PhonebookManager {
     {
         ListNode node = new ListNode(nameFirst, nameLast, address, city, number);
 
-        if (front == null) {
+        if (front == null)
+        {
             front = node;
-        } else {
+        } // end of if
+        else
+        {
             ListNode current = front;
-            while (current.next != null) {
+            while (current.next != null)
+            {
                 current = current.next;
             } // end of while loop
             current.next = node;
-        } // end of if/else
+        } // end of else
     } // end of add method
 
     // remove method, deletes node at the given index
     public void remove(int index)
     {
         ListNode current;
-        if (index == 0) {
+        if (index == 0)
+        {
             front = front.next;
-        } else if (nodeAt(index).next == null) {
+        } // end of if
+        else if (nodeAt(index).next == null)
+        {
             nodeAt(index - 1).next = null;
-        } else {
+        } // end of else if
+        else
+        {
             current = nodeAt(index - 1);
             current.next = current.next.next;
-        } // end of if/else
+        } // end of else
     } // end of remove method
 
     //*************************************************\\
@@ -97,16 +111,17 @@ public class PhonebookManager {
     // modifynameFirst method, changes first name to another String
     public void modifyNameFirst(PhonebookManager cityBook)
     {
-        //Scanner input = new Scanner(System.in);
         String nameToChange;
         String userString = "";
         int nodeIndex = -1;
         boolean changeSuccessful = false;
-        do {
+        do
+        {
             System.out.println("First you must select the first name to change.");
             nameToChange = PhonebookMenu.userString();
             nodeIndex = cityBook.getNameFirst(nameToChange);
-            if (nodeIndex != -1) {
+            if (nodeIndex != -1)
+            {
                 System.out.println("Please enter the new first name.");
                 userString = PhonebookMenu.userString();
                 nodeAt(nodeIndex).nameFirst = userString;
@@ -122,11 +137,13 @@ public class PhonebookManager {
         String userString = "";
         int nodeIndex = -1;
         boolean changeSuccessful = false;
-        do {
+        do
+        {
             System.out.println("First you must select the last name to change.");
             nameToChange = PhonebookMenu.userString();
             nodeIndex = cityBook.getNameLast(nameToChange);
-            if (nodeIndex != -1) {
+            if (nodeIndex != -1)
+            {
                 System.out.println("Please enter the new last name.");
                 userString = PhonebookMenu.userString();
                 nodeAt(nodeIndex).nameLast = userString;
@@ -142,11 +159,13 @@ public class PhonebookManager {
         String userString = "";
         int nodeIndex = -1;
         boolean changeSuccessful = false;
-        do {
+        do
+        {
             System.out.println("First you must select the address to change.");
             nameToChange = PhonebookMenu.userString();
             nodeIndex = cityBook.getAddress(nameToChange);
-            if (nodeIndex != -1) {
+            if (nodeIndex != -1)
+            {
                 System.out.println("Please enter the new address.");
                 userString = PhonebookMenu.userString();
                 nodeAt(nodeIndex).address = userString;
@@ -163,18 +182,20 @@ public class PhonebookManager {
         String userString = "";
         int nodeIndex = -1;
         boolean changeSuccessful = false;
-        do {
+        do
+        {
             System.out.println("First you must select the city to change.");
             nameToChange = PhonebookMenu.userString();
             nodeIndex = cityBook.getCity(nameToChange);
-            if (nodeIndex != -1) {
+            if (nodeIndex != -1)
+            {
                 System.out.println("Please enter the new city.");
                 userString = PhonebookMenu.userString();
                 nodeAt(nodeIndex).city = userString;
                 changeSuccessful = true;
             } // end of if
         } while (!changeSuccessful);
-    }//end namefirst
+    }//end of modifyCity method
 
     // modifyPhoneNumber method, changes a phone number in the phonebook
     public void modifyPhoneNumber(PhonebookManager cityBook)
@@ -184,11 +205,13 @@ public class PhonebookManager {
         String userString = "";
         int nodeIndex = -1;
         boolean changeSuccessful = false;
-        do {
+        do
+        {
             System.out.println("First you must select the phone number to change.");
             nameToChange = PhonebookMenu.userString();
             nodeIndex = cityBook.getPhoneNumber(nameToChange);
-            if (nodeIndex != -1) {
+            if (nodeIndex != -1)
+            {
                 System.out.println("Please enter the new phone number.");
                 userString = PhonebookMenu.userString();
                 nodeAt(nodeIndex).number = userString;
@@ -209,12 +232,15 @@ public class PhonebookManager {
         ListNode current = front;
         int index = 0;
 
-        if (current == null) {
+        if (current == null)
+        {
             return -1;
         } // end of if
 
-        do { //iterate through list and check if first name exists in the phonebook list
-            if (nameFirst.equalsIgnoreCase(current.nameFirst)) {
+        do
+        { //iterate through list and check if first name exists in the phonebook list
+            if (nameFirst.equalsIgnoreCase(current.nameFirst))
+            {
                 return index;
             } // end of if
             current = current.next;
@@ -230,12 +256,15 @@ public class PhonebookManager {
         ListNode current = front;
         int index = 0;
 
-        if (current == null) {
+        if (current == null)
+        {
             return -1;
         } // end of if
 
-        do { //iterate through list and check if the last name exists in the phonebook list
-            if (nameLast.equalsIgnoreCase(current.nameLast)) {
+        do
+        { //iterate through list and check if the last name exists in the phonebook list
+            if (nameLast.equalsIgnoreCase(current.nameLast))
+            {
                 return index;
             } // end of if
             current = current.next;
@@ -251,12 +280,15 @@ public class PhonebookManager {
         ListNode current = front;
         int index = 0;
 
-        if (current == null) {
+        if (current == null)
+        {
             return -1;
         } // end of if
 
-        do { //iterate through list and check if the address exists in the phonebook list
-            if (address.equalsIgnoreCase(current.address)) {
+        do
+        { //iterate through list and check if the address exists in the phonebook list
+            if (address.equalsIgnoreCase(current.address))
+            {
                 return index;
             } // end of if
             current = current.next;
@@ -272,7 +304,8 @@ public class PhonebookManager {
         ListNode current = front;
         int index = 0;
 
-        if (current == null) {
+        if (current == null)
+        {
             return -1;
         } // end of if
 
@@ -293,12 +326,15 @@ public class PhonebookManager {
         ListNode current = front;
         int index = 0;
 
-        if (current == null) {
+        if (current == null)
+        {
             return -1;
         } // end of if
 
-        do { //iterate through list and check if phone number exists in the phonebook list
-            if (number.equalsIgnoreCase(current.number)) {
+        do
+        { //iterate through list and check if phone number exists in the phonebook list
+            if (number.equalsIgnoreCase(current.number))
+            {
                 return index;
             } // end of if
             current = current.next;

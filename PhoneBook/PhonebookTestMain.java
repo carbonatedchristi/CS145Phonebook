@@ -2,12 +2,11 @@
 //             Hannah Hendrickson
 // Assignment 2 PhoneBook
 // Class: CS145 Hybrid01
-// Date: 05/13/2022
+// Date: 05/17/2022
 // Purpose: This program creates a linkedlist for use as a phonebook.
 // A user can add, remove, modify, and search for entries via a menu.
 // The menu can also view the entire phonebook printed to the console.
-
-// Notes for PhonebookTestMain:
+// We both used IntelliJ for our IDE and GitHub for version control.
 
 
 package PhoneBook;
@@ -21,14 +20,12 @@ public class PhonebookTestMain
     {
 
        Scanner input = new Scanner(System.in);
-        //Creates a Phonebook for Bellingham
+        //Creates a PhonebookManager for Bellingham
         PhonebookManager bellingham = new PhonebookManager();
         // Populates the linkedlist with sample entries
         addTestEntries(bellingham);
 
         System.out.println("There are " + bellingham.size() + " entries in the phonebook.");
-
-
 
         // For every menu selection completed, the user will be prompted again
         while (userInput(input))

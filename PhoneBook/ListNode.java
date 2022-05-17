@@ -2,10 +2,11 @@
 //             Hannah Hendrickson
 // Assignment 2 PhoneBook
 // Class: CS145 Hybrid01
-// Date: 05/13/2022
+// Date: 05/17/2022
 // Purpose: This program creates a linkedlist for use as a phonebook.
 // A user can add, remove, modify, and search for entries via a menu.
 // The menu can also view the entire phonebook printed to the console.
+// We both used IntelliJ for our IDE and GitHub for version control.
 
 package PhoneBook;
 

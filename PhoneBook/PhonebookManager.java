@@ -11,165 +11,8 @@
 
 package PhoneBook;
 
-import java.util.Scanner;
-
-public class PhonebookManager
-{
+public class PhonebookManager {
     protected static ListNode front;
-
-    // add method, simply adds new node to end of list
-    public static void add(String nameFirst, String nameLast,
-                           String address, String city, String number)
-    {
-        ListNode node = new ListNode(nameFirst, nameLast, address, city, number);
-
-        if (front == null)
-        {
-            front = node;
-        }
-        else
-        {
-            ListNode current = front;
-            while (current.next != null)
-            {
-                current = current.next;
-            } // end of while loop
-            current.next = node;
-        } // end of if/else
-    } // end of add method
-
-    // remove method, deletes node at the given index
-    public void remove(int index)
-    {
-        ListNode current;
-        if (index == 0)
-        {
-            front = front.next;
-        }
-        else if(nodeAt(index).next == null)
-        {
-            nodeAt(index -1).next = null;
-        }
-        else
-        {
-            current = nodeAt(index - 1);
-            current.next = current.next.next;
-        } // end of if/else
-    } // end of remove method
-
-    //modifyNameLast method, changes user's selected last name to another String
-    public void modifyNameLast(PhonebookManager cityBook)
-    {
-        //Scanner input = new Scanner(System.in);
-        String nameToChange;
-        String userString = "";
-        int nodeIndex = -1;
-        boolean changeSuccessful = false;
-        do
-        {
-                System.out.println("First you must select the last name to change.");
-                nameToChange = PhonebookMenu.userString();
-                nodeIndex = cityBook.getNameLast(nameToChange);
-                if (nodeIndex != -1)
-                {
-                    System.out.println("Please enter the new value.");
-                    userString = PhonebookMenu.userString();
-                    nodeAt(nodeIndex).nameLast = userString;
-                    changeSuccessful = true;
-                } // end of if
-        } while (!changeSuccessful);
-    } //end of modifyNameLast method
-
-        //old code (probably delete)
-       // ListNode current = nodeAt(index);
-
-       // current.nameLast = nameLast;
-        //return userSelection;
-   // } // end of modifyNameLast method
-
-    // modifyNameFirst method, changes first name in the entry of given index
-    /*
-    public void modifyNameFirst(int phonebookSize)
-    {
-        Scanner input = new Scanner(System.in);
-        System.out.println("pb managPlease enter the current first name of the entry you would like to modify:");
-        String userSelection = input.next();
-        userSelection = userSelection.toLowerCase();
-        String nameLast = "";
-        //addTestEntries(bellingham);
-
-        for (int i = 1; i == phonebookSize; i++)
-        {
-            if (userSelection == front.nameFirst) {
-                System.out.println("The last name was found. Please enter the new last name: ");
-                nameLast = input.next();
-            }
-            //return nameLast;
-        } // end of if
-        //ListNode current = nodeAt(index);
-
-        //current.nameFirst = nameFirst;
-    } // end of modifyNameFirst method
-    */
-
-
-    // modifyCity method, changes city name in the entry of given index
-    public void modifyCity(String city, int index)
-    {
-        ListNode current = nodeAt(index);
-        current.city = city;
-    } // end of modifyCity method
-
-    //modifyNumber method, changes the number field at the given index
-    public void modifyNumber(String number, int index)
-    {
-        ListNode current = nodeAt(index);
-        current.number = number;
-    } // end of modifyNumber method
-
-
-    // nodeAt method, returns the node at the given index
-    public ListNode nodeAt(int index)
-        throws NullPointerException
-    {
-        ListNode current = front;
-
-        for (int i = 0; i < index; i++)
-        {
-            if (current.next == null)
-            {
-                // cuts the method short if the next node is null
-                // this avoids NullPointerException
-                return current;
-            } // end of if
-            current = current.next;
-        } // end of for loop
-        return current;
-    } // end of nodeAt method
-
-    // getEntry method, returns the index num of the entry containing the given last name
-    //returns -1 if phonebook is empty or if no entry found
-    public int getNameLast(String nameLast)
-    {
-        ListNode current = front;
-        int index = 0;
-
-        if (current == null)
-        {
-            return -1;
-        } // end of if
-
-        do
-        { //iterate through list and check if given last name is found
-            if (nameLast.equalsIgnoreCase(current.nameLast))
-            {
-                return index;
-            } // end of if
-            current = current.next;
-            index++;
-        } while (current.next != null);
-        return -1;
-    } // end of getNameLast method
 
     // display method, prints the formatted contents of each node in list
     protected static void display(ListNode front)
@@ -177,8 +20,7 @@ public class PhonebookManager
         ListNode current = front;
         int i = 1;
         // iterates through the linked list, adds a number to each entry
-        while (current != null)
-        {
+        while (current != null) {
             System.out.print(i + ". " + current.nameLast + ", " + current.nameFirst + " (" +
                     current.address + ", " + current.city + ", " + current.number + ")\n");
 
@@ -193,13 +35,276 @@ public class PhonebookManager
     {
         int count = 0;
         ListNode current = front;
-        while (current != null)
-        {
+        while (current != null) {
             current = current.next;
             count++;
         } // end of while
         return count;
     } // end of size method
 
-} // end of PhonebookManager class
+    // nodeAt method, returns the node at the given index
+    public ListNode nodeAt(int index)
+            throws NullPointerException
+    {
+        ListNode current = front;
 
+        for (int i = 0; i < index; i++) {
+            if (current.next == null) {
+                // cuts the method short if the next node is null
+                // this avoids NullPointerException
+                return current;
+            } // end of if
+            current = current.next;
+        } // end of for loop
+        return current;
+    } // end of nodeAt method
+
+    // add method, simply adds new node to end of list
+    public static void add(String nameFirst, String nameLast,
+                           String address, String city, String number)
+    {
+        ListNode node = new ListNode(nameFirst, nameLast, address, city, number);
+
+        if (front == null) {
+            front = node;
+        } else {
+            ListNode current = front;
+            while (current.next != null) {
+                current = current.next;
+            } // end of while loop
+            current.next = node;
+        } // end of if/else
+    } // end of add method
+
+    // remove method, deletes node at the given index
+    public void remove(int index)
+    {
+        ListNode current;
+        if (index == 0) {
+            front = front.next;
+        } else if (nodeAt(index).next == null) {
+            nodeAt(index - 1).next = null;
+        } else {
+            current = nodeAt(index - 1);
+            current.next = current.next.next;
+        } // end of if/else
+    } // end of remove method
+
+    //*************************************************\\
+    //                MODIFY METHODS                   \\
+    //*************************************************\\
+
+    // modifynameFirst method, changes first name to another String
+    public void modifyNameFirst(PhonebookManager cityBook)
+    {
+        //Scanner input = new Scanner(System.in);
+        String nameToChange;
+        String userString = "";
+        int nodeIndex = -1;
+        boolean changeSuccessful = false;
+        do {
+            System.out.println("First you must select the first name to change.");
+            nameToChange = PhonebookMenu.userString();
+            nodeIndex = cityBook.getNameFirst(nameToChange);
+            if (nodeIndex != -1) {
+                System.out.println("Please enter the new first name.");
+                userString = PhonebookMenu.userString();
+                nodeAt(nodeIndex).nameFirst = userString;
+                changeSuccessful = true;
+            } // end of if
+        } while (!changeSuccessful);
+    }//end modifyNameFirst method
+
+    //modifyNameLast method, changes user's selected last name to another String
+    public void modifyNameLast(PhonebookManager cityBook)
+    {
+        String nameToChange;
+        String userString = "";
+        int nodeIndex = -1;
+        boolean changeSuccessful = false;
+        do {
+            System.out.println("First you must select the last name to change.");
+            nameToChange = PhonebookMenu.userString();
+            nodeIndex = cityBook.getNameLast(nameToChange);
+            if (nodeIndex != -1) {
+                System.out.println("Please enter the new last name.");
+                userString = PhonebookMenu.userString();
+                nodeAt(nodeIndex).nameLast = userString;
+                changeSuccessful = true;
+            } // end of if
+        } while (!changeSuccessful);
+    } //end of modifyNameLast method
+
+    //modifyAddress method, changes user's selected address to another String
+    public void modifyAddress(PhonebookManager cityBook)
+    {
+        String nameToChange;
+        String userString = "";
+        int nodeIndex = -1;
+        boolean changeSuccessful = false;
+        do {
+            System.out.println("First you must select the address to change.");
+            nameToChange = PhonebookMenu.userString();
+            nodeIndex = cityBook.getAddress(nameToChange);
+            if (nodeIndex != -1) {
+                System.out.println("Please enter the new address.");
+                userString = PhonebookMenu.userString();
+                nodeAt(nodeIndex).address = userString;
+                changeSuccessful = true;
+            } // end of if
+        } while (!changeSuccessful);
+    }//end modifyAddress method
+
+    // modifyCity method, changes city name in the entry of given index
+    public void modifyCity(PhonebookManager cityBook)
+    {
+        //Scanner input = new Scanner(System.in);
+        String nameToChange;
+        String userString = "";
+        int nodeIndex = -1;
+        boolean changeSuccessful = false;
+        do {
+            System.out.println("First you must select the city to change.");
+            nameToChange = PhonebookMenu.userString();
+            nodeIndex = cityBook.getCity(nameToChange);
+            if (nodeIndex != -1) {
+                System.out.println("Please enter the new city.");
+                userString = PhonebookMenu.userString();
+                nodeAt(nodeIndex).city = userString;
+                changeSuccessful = true;
+            } // end of if
+        } while (!changeSuccessful);
+    }//end namefirst
+
+    // modifyPhoneNumber method, changes a phone number in the phonebook
+    public void modifyPhoneNumber(PhonebookManager cityBook)
+    {
+        //Scanner input = new Scanner(System.in);
+        String nameToChange;
+        String userString = "";
+        int nodeIndex = -1;
+        boolean changeSuccessful = false;
+        do {
+            System.out.println("First you must select the phone number to change.");
+            nameToChange = PhonebookMenu.userString();
+            nodeIndex = cityBook.getPhoneNumber(nameToChange);
+            if (nodeIndex != -1) {
+                System.out.println("Please enter the new phone number.");
+                userString = PhonebookMenu.userString();
+                nodeAt(nodeIndex).number = userString;
+                changeSuccessful = true;
+            } // end of if
+        } while (!changeSuccessful);
+    }//end modifyPhoneNumber method
+
+
+    //*************************************************\\
+    //                  GET METHODS                    \\
+    //*************************************************\\
+
+    // getNameFirst method, returns the index num of the first name containing the given first name
+    //returns -1 if phonebook is empty or if no entry found
+    public int getNameFirst(String nameFirst)
+    {
+        ListNode current = front;
+        int index = 0;
+
+        if (current == null) {
+            return -1;
+        } // end of if
+
+        do { //iterate through list and check if first name exists in the phonebook list
+            if (nameFirst.equalsIgnoreCase(current.nameFirst)) {
+                return index;
+            } // end of if
+            current = current.next;
+            index++;
+        } while (current.next != null);
+        return -1;
+    } // end of getNameFirst method
+
+    // getNameLast method, returns the index num of the last name containing the given last name
+    //returns -1 if phonebook is empty or if no entry found
+    public int getNameLast(String nameLast)
+    {
+        ListNode current = front;
+        int index = 0;
+
+        if (current == null) {
+            return -1;
+        } // end of if
+
+        do { //iterate through list and check if the last name exists in the phonebook list
+            if (nameLast.equalsIgnoreCase(current.nameLast)) {
+                return index;
+            } // end of if
+            current = current.next;
+            index++;
+        } while (current.next != null);
+        return -1;
+    } // end of getNameLast method
+
+    // getAddress method, returns the index num of the address containing the given address
+    //returns -1 if phonebook is empty or if no entry found
+    public int getAddress(String address)
+    {
+        ListNode current = front;
+        int index = 0;
+
+        if (current == null) {
+            return -1;
+        } // end of if
+
+        do { //iterate through list and check if the address exists in the phonebook list
+            if (address.equalsIgnoreCase(current.address)) {
+                return index;
+            } // end of if
+            current = current.next;
+            index++;
+        } while (current.next != null);
+        return -1;
+    } // end of getAddress method
+
+    // getCity method, returns the index num of the City containing the given city
+    //returns -1 if phonebook is empty or if no entry found
+    public int getCity(String city)
+    {
+        ListNode current = front;
+        int index = 0;
+
+        if (current == null) {
+            return -1;
+        } // end of if
+
+        do { //iterate through list and check if city exists in the phonebook list
+            if (city.equalsIgnoreCase(current.city)) {
+                return index;
+            } // end of if
+            current = current.next;
+            index++;
+        } while (current.next != null);
+        return -1;
+    } // end of getCity method
+
+    // getPhoneNumber method, returns the index num of the phone num containing the given phone num
+    //returns -1 if phonebook is empty or if no entry found
+    public int getPhoneNumber(String number)
+    {
+        ListNode current = front;
+        int index = 0;
+
+        if (current == null) {
+            return -1;
+        } // end of if
+
+        do { //iterate through list and check if phone number exists in the phonebook list
+            if (number.equalsIgnoreCase(current.number)) {
+                return index;
+            } // end of if
+            current = current.next;
+            index++;
+        } while (current.next != null);
+        return -1;
+    } // end of getPhoneNumber method
+
+} //end of PBManager class

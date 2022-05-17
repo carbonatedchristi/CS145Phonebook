@@ -21,13 +21,11 @@ public class PhonebookTestMain
     {
 
        Scanner input = new Scanner(System.in);
-
+        //Creates a Phonebook for Bellingham
         PhonebookManager bellingham = new PhonebookManager();
-        // populates the linkedlist with sample entries
+        // Populates the linkedlist with sample entries
         addTestEntries(bellingham);
 
-        //bellingham.modifyNameLast(bellingham);
-        int phonebookSize = bellingham.size();
         System.out.println("There are " + bellingham.size() + " entries in the phonebook.");
 
 

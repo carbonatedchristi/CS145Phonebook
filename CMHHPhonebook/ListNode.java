@@ -8,7 +8,7 @@
 // The menu can also view the entire phonebook printed to the console.
 // We both used IntelliJ for our IDE and GitHub for version control.
 
-package PhoneBook;
+package CMHHPhonebook;
 
 public class ListNode {
 

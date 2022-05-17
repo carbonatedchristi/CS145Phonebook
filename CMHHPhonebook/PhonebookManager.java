@@ -9,7 +9,7 @@
 // We both used IntelliJ for our IDE and GitHub for version control.
 
 
-package PhoneBook;
+package CMHHPhonebook;
 
 public class PhonebookManager
 {

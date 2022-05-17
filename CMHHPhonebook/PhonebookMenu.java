@@ -12,7 +12,7 @@
 // that the user can't crash the program via invalid entries.
 // Switch cases are used for menu functionality.
 
-package PhoneBook;
+package CMHHPhonebook;
 import java.util.Random;
 import java.util.Scanner;
 

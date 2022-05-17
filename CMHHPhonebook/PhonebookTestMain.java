@@ -9,10 +9,10 @@
 // We both used IntelliJ for our IDE and GitHub for version control.
 
 
-package PhoneBook;
+package CMHHPhonebook;
 import java.util.Scanner;
 
-import static PhoneBook.PhonebookMenu.*;
+import static CMHHPhonebook.PhonebookMenu.*;
 
 public class PhonebookTestMain
 {
